@@ -17,7 +17,28 @@ ExportedObj/
 *.pidb
 *.booproj
 *.svd
-
+*.csproj
+*.DotSettings
+*.DS_Store
+*.unityproj
+/obj/
+/Library/
+/Temp/
+/Assets/UnityVS/
+/Assets/UnityVS.meta
+/Assets/Nico/AssetList
+/Bundles/
+/AssetMgrCfg/EditorMode.txt*
+/Intermediate/
+/Assets/Nico/Script/UI/Shader/GradeFrameMat.mat*
+/Assets/Nico/Script/UI/Shader/GradeLineMat.mat*
+/Assets/Nico/Script/UI/Shader/Mat_BattleUISlider_Class1.mat*
+/Assets/Nico/Script/UI/Shader/Mat_BattleUISlider_Class2.mat*
+/Assets/Nico/Script/Editor/ProjectBuilder/Tools/mod_pbxproj.pyc*
+/UnityVS.nico-client.sln.ide/
+/Release/
+/.vs
+/Assets/ThirdPartyAssets/Plugins/FullInspector2_Generated/fiPersistentEditorStorage*
 
 # Unity3D generated meta files
 *.pidb.meta
