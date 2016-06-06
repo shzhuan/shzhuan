@@ -16,6 +16,11 @@ public class UIController : MonoBehaviour {
 
     List<StackCommand> m_commandStack = new List<StackCommand>();
 
+    void Awake() {
+        if (instance == null)
+            instance = this;
+    }
+
     public void Command(string command, bool addStack = true) {
         if (string.IsNullOrEmpty(command)) {
             Debug.LogWarning("Command not valid!");
@@ -50,7 +55,7 @@ public class UIController : MonoBehaviour {
             default:
                 IsBack = false;
                 blackboard.SendEvent(command);
-                stateMachine.blackboard.GetStringVar("CurrentCommand").Value = command;
+                //stateMachine.blackboard.GetStringVar("CurrentCommand").Value = command;
                 StackCommand stackCmd = new StackCommand();
                 stackCmd.command = command;
                 stackCmd.nostack = !addStack;

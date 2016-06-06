@@ -11,7 +11,7 @@ public class SoundManager : MonoBehaviour {
                 DontDestroyOnLoad(obj);
                 obj.name = "SoundManager";
                 m_instance = obj.AddComponent<SoundManager>();
-                m_instance.soundPrefab = Resources.Load<Object>("Sound/SoundPrefab");
+                m_instance.soundPrefab = Resources.Load<Object>("Sound/Prefab/SoundPrefab");
             }
             return m_instance;
         }
@@ -31,7 +31,7 @@ public class SoundManager : MonoBehaviour {
                     if (soundList[i].name == soundName) {
                         soundList[i].gameObject.SetActive(true);
                         nowPlayingSoundIndex = i;
-                        break;
+                        return;
                     }
                 }
                 CreateSound(soundName, isLoop);
