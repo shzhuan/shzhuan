@@ -14,7 +14,7 @@ public class UICommand {
     }
 
     public const string BACK = "BACK";
-    public const string TEST1 = "Test1";
-    public const string TEST2 = "Test2";
+    public const string SHAN_TRAVEL = "Shan.Travel";
+    public const string SHAN_SHOP = "Shan.Shop";
 
 }

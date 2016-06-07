@@ -17,8 +17,9 @@ public class UIController : MonoBehaviour {
     List<StackCommand> m_commandStack = new List<StackCommand>();
 
     void Awake() {
-        if (instance == null)
+        if (instance == null) {
             instance = this;
+        }
     }
 
     public void Command(string command, bool addStack = true) {
