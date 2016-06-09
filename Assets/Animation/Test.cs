@@ -1,24 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Test : MonoBehaviour {
 
-    public Animator animationObject;
-    public string animationName;
-    public float speed;
-    public bool play;
+    public Text text;
 
-    // Use this for initialization
+    string str;
+    
     void Start () {
         
     }
 	
-	// Update is called once per frame
 	void Update () {
-        PlayUIAnimation();
+        
     }
 
-    void PlayUIAnimation() {
+    void SetString() {
         
     }
 

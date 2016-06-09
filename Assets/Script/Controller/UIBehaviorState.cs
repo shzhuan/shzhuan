@@ -2,7 +2,7 @@
 using System;
 
 namespace BehaviourMachine {
-    public class UIBehaviorState : StateBehaviour {
+    public class UIBehaviorState : InternalActionState {
 
         public string bgmName = "";
         public bool loop = false;
@@ -10,13 +10,12 @@ namespace BehaviourMachine {
         public UIActiveState[] inactiveObject;
         public UIAnimation[] animationObject;
 
-        void OnEnable() {
-            PlaySound();
-            StateOnEnableAwake();
-        }
+        float m_animationTime = 0;
 
-        void OnDisable() {
-            StateOnEnableEnd();
+        public UIBehaviorState() {
+            this.onEnable += PlaySound;
+            this.onEnable += StateOnEnableAwake;
+            this.onDisable += StateOnEnableEnd;
         }
 
         void PlaySound() {
@@ -40,6 +39,8 @@ namespace BehaviourMachine {
                     inactiveObject[i].target.SetActive(false);
                 }
             }
+            PlayUIAnimation();
+            SendEvent();
         }
 
         void StateOnEnableEnd() {
@@ -57,6 +58,7 @@ namespace BehaviourMachine {
                     inactiveObject[i].target.SetActive(false);
                 }
             }
+            m_animationTime = 0;
         }
 
         void PlayUIAnimation() {
@@ -72,12 +74,28 @@ namespace BehaviourMachine {
                     }
                     foreach (AnimationState state in animationObject[i].target) {
                         if (state.name == animationObject[i].animationName) {
+                            if (state.time > m_animationTime) {
+                                m_animationTime = state.time;
+                            }
                             state.speed = animationObject[i].speed;
                             animationObject[i].target.Play(state.name);
+                            break;
                         }
                     }
                 }
             }
+        }
+
+        void SendEvent() {
+            GDGeek.TaskWait tw = new GDGeek.TaskWait(m_animationTime);
+            GDGeek.TaskManager.PushBack(tw, delegate () {
+                //Debug.Log(blackboard.GetStringVar("CurrentCommand"));
+                //var currentCmd = blackboard.GetStringVar("CurrentCommand").Value;
+                //if (!string.IsNullOrEmpty(currentCmd)) {
+                    //SendEvent(currentCmd);
+                //}
+            });
+            GDGeek.TaskManager.Run(tw);
         }
 
     }

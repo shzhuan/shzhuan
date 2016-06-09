@@ -473,7 +473,6 @@ namespace BehaviourMachine {
             if (InternalBlackboard.onUpdateHideFlag != null)
                 InternalBlackboard.onUpdateHideFlag(this);
             #endif
-
             if (InternalGlobalBlackboard.Instance == null)
                 Print.LogWarning("You should create a GlobalBlackboard by selecting \"Tools/BehaviourMachine/Global Blackboard\" from the Unity toolbar.");
         }
@@ -1099,6 +1098,7 @@ namespace BehaviourMachine {
         /// <returns>The string variable that has the supplied name.</returns>
         /// </summary>
         public StringVar GetStringVar (string name) {
+            Debug.Log(m_StringVars.Length);
             for (int i = 0; i < m_StringVars.Length; i++) {
                 if (m_StringVars[i].name == name)
                     return m_StringVars[i];
