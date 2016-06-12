@@ -1098,7 +1098,6 @@ namespace BehaviourMachine {
         /// <returns>The string variable that has the supplied name.</returns>
         /// </summary>
         public StringVar GetStringVar (string name) {
-            Debug.Log(m_StringVars.Length);
             for (int i = 0; i < m_StringVars.Length; i++) {
                 if (m_StringVars[i].name == name)
                     return m_StringVars[i];

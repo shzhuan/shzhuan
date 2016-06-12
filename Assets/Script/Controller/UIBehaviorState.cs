@@ -10,12 +10,26 @@ namespace BehaviourMachine {
         public UIActiveState[] inactiveObject;
         public UIAnimation[] animationObject;
 
+        bool isSendEvent = false;
+        float m_stateTime = 0;
         float m_animationTime = 0;
 
         public UIBehaviorState() {
             this.onEnable += PlaySound;
             this.onEnable += StateOnEnableAwake;
             this.onDisable += StateOnEnableEnd;
+        }
+
+        void Update() {
+            m_stateTime += Time.deltaTime;
+            if (isSendEvent) {
+                if (m_stateTime >= m_animationTime) {
+                    var currentCmd = blackboard.GetStringVar("CurrentCommand").Value;
+                    if (!string.IsNullOrEmpty(currentCmd)) {
+                        SendEvent(currentCmd);
+                    }
+                }
+            }
         }
 
         void PlaySound() {
@@ -40,7 +54,7 @@ namespace BehaviourMachine {
                 }
             }
             PlayUIAnimation();
-            SendEvent();
+            //SendEvent();
         }
 
         void StateOnEnableEnd() {
@@ -58,6 +72,8 @@ namespace BehaviourMachine {
                     inactiveObject[i].target.SetActive(false);
                 }
             }
+            isSendEvent = false;
+            m_stateTime = 0;
             m_animationTime = 0;
         }
 
@@ -84,19 +100,19 @@ namespace BehaviourMachine {
                     }
                 }
             }
+            isSendEvent = true;
         }
 
-        void SendEvent() {
-            GDGeek.TaskWait tw = new GDGeek.TaskWait(m_animationTime);
-            GDGeek.TaskManager.PushBack(tw, delegate () {
-                //Debug.Log(blackboard.GetStringVar("CurrentCommand"));
-                //var currentCmd = blackboard.GetStringVar("CurrentCommand").Value;
-                //if (!string.IsNullOrEmpty(currentCmd)) {
-                    //SendEvent(currentCmd);
-                //}
-            });
-            GDGeek.TaskManager.Run(tw);
-        }
+        //void SendEvent() {
+        //    GDGeek.TaskWait tw = new GDGeek.TaskWait(m_animationTime);
+        //    GDGeek.TaskManager.PushBack(tw, delegate () {
+        //        var currentCmd = blackboard.GetStringVar("CurrentCommand").Value;
+        //        if (!string.IsNullOrEmpty(currentCmd)) {
+        //            SendEvent(currentCmd);
+        //        }
+        //    });
+        //    GDGeek.TaskManager.Run(tw);
+        //}
 
     }
 }

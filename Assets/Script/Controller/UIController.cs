@@ -56,7 +56,7 @@ public class UIController : MonoBehaviour {
             default:
                 IsBack = false;
                 blackboard.SendEvent(command);
-                //stateMachine.blackboard.GetStringVar("CurrentCommand").Value = command;
+                stateMachine.blackboard.GetStringVar("CurrentCommand").Value = command;
                 StackCommand stackCmd = new StackCommand();
                 stackCmd.command = command;
                 stackCmd.nostack = !addStack;
