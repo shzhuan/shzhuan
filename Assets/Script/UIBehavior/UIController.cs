@@ -4,10 +4,10 @@ using BehaviourMachine;
 
 public class UIController : MonoBehaviour {
 
-    static UIController instance;
+    private static UIController m_instance;
     public static UIController Instance
     {
-        get { return instance; }
+        get { return m_instance; }
     }
 
     public StateMachine stateMachine;
@@ -17,8 +17,8 @@ public class UIController : MonoBehaviour {
     List<StackCommand> m_commandStack = new List<StackCommand>();
 
     void Awake() {
-        if (instance == null) {
-            instance = this;
+        if (m_instance == null) {
+            m_instance = this;
         }
     }
 
@@ -67,7 +67,7 @@ public class UIController : MonoBehaviour {
         }
     }
 
-    bool CommandContains(StackCommand command) {
+    private bool CommandContains(StackCommand command) {
         foreach (StackCommand cmd in m_commandStack) {
             if (cmd.command.Equals(command.command)) {
                 return true;
