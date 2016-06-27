@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace Ctrl {
+namespace Ctrl.Home {
     public class PanelHomeCtrl : MonoBehaviour {
 
-        public View.PanelHome panelHome = null;
+        public View.Home.PanelHome panelHome = null;
 
         void Awake() {
             panelHome.btn_travel.onClick.AddListener( SendTravelCommand );

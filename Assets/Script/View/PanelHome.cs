@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-namespace View {
+namespace View.Home {
     public class PanelHome : MonoBehaviour {
 
         public Button btn_travel;
