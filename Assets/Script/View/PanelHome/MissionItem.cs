@@ -5,28 +5,40 @@ using UnityEngine.UI;
 namespace View.Home {
     public class MissionItem : MonoBehaviour {
 
-        public Image btnImage;
+        public Image selectImage;
         public Image missionState; 
         public Text missionDetail;
-        public Button button;
+        public Button btnMisson;
 
+        private int m_missionId = 0;
         private bool m_isSelected = false;
+
+        public int MissionID
+        {
+            get { return m_missionId; }
+        }
 
         public bool IsSelscted
         {
             get { return m_isSelected; }
         }
 
+        public void Init(int id, string detail) {
+            missionState.gameObject.SetActive(false);
+            m_missionId = id;
+            SetMissionDetail(detail);
+        }
+
         public void BtnState(bool isSelected) {
             m_isSelected = isSelected;
             if (isSelected) {
-                btnImage.color = new Color(btnImage.color.r, btnImage.color.g, btnImage.color.b, 1);
+                selectImage.color = new Color(selectImage.color.r, selectImage.color.g, selectImage.color.b, 1);
                 return;
             }
-            btnImage.color = new Color(btnImage.color.r, btnImage.color.g, btnImage.color.b, 0.8f);
+            selectImage.color = new Color(selectImage.color.r, selectImage.color.g, selectImage.color.b, 0.8f);
         }
 
-        public void SetMissionDetail(string detail) {
+        private void SetMissionDetail(string detail) {
             missionDetail.text = detail;
         }
 

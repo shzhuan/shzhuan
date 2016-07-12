@@ -7,11 +7,20 @@ namespace Ctrl.Home {
         public View.Home.PanelHome panelHome = null;
 
         void Awake() {
-            panelHome.btn_travel.onClick.AddListener( SendTravelCommand );
+            panelHome.btnTravel.onClick.AddListener( SendTravelCommand );
+            for (int i = 0; i < panelHome.missionList.missionList.Length; ++i) {
+                panelHome.missionList.missionList[i].btnMisson.onClick.AddListener(
+                    () => MissionItemEvent(panelHome.missionList.missionList[i]));
+            }
         }
 
-        public void SendTravelCommand() {
+        private void SendTravelCommand() {
             UIController.Instance.Command(UICommand.SHAN_TRAVEL);
+        }
+
+        private void MissionItemEvent(View.Home.MissionItem item) {
+            item.BtnState(!item.IsSelscted);
+            panelHome.roleList.SetActive(!item.IsSelscted);
         }
 
     }
