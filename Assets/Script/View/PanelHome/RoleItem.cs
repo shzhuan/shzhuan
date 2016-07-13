@@ -8,10 +8,11 @@ namespace View.Home {
         public Image selectImage;
         public Image stateImage;
         public Image recommendedImage;
+        public Button btnRole;
 
         private int m_roleId;
-        private bool m_isSelected;
-        private bool m_recommended;
+        private bool m_isSelected = false;
+        private bool m_recommended = false;
 
         public int RoleID
         {
@@ -20,12 +21,28 @@ namespace View.Home {
 
         public bool IsSelscted
         {
+            set { m_isSelected = value; }
             get { return m_isSelected; }
         }
 
-        public void Init(int id, Sprite roleIcon) {
-            m_roleId = id;
+        public bool IsRecommended
+        {
+            get { return m_recommended; }
+        }
 
+        public void Init(int id, Sprite icon, bool isRecommended) {
+            m_roleId = id;
+            roleIcon.sprite = icon;
+            m_recommended = isRecommended;
+        }
+
+        public void BtnState(bool isSelected) {
+            m_isSelected = isSelected;
+            if (isSelected) {
+                selectImage.gameObject.SetActive(true);
+                return;
+            }
+            selectImage.gameObject.SetActive(false);
         }
 
     }

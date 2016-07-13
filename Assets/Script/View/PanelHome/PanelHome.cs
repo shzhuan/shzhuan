@@ -8,6 +8,7 @@ namespace View.Home {
         public RoleItemList roleList;
         public Button btnTravel;
         public Button btnShop;
+        public Image mask;
         
 
     }
