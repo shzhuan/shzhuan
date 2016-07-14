@@ -20,7 +20,10 @@ namespace View.Home {
 
         public bool IsSelscted
         {
-            set { m_isSelected = value; }
+            set {
+                m_isSelected = value;
+                BtnState(m_isSelected);
+            }
             get { return m_isSelected; }
         }
 

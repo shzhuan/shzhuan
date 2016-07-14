@@ -8,20 +8,16 @@ namespace Ctrl.Home {
 
         void Awake() {
             panelHome.btnTravel.onClick.AddListener( SendTravelCommand );
-            for (int i = 0; i < panelHome.missionList.missionList.Length; ++i) {
-                panelHome.missionList.missionList[i].btnMisson.onClick.AddListener(
-                    () => MissionItemEvent(panelHome.missionList.missionList[i]));
-            }
-            for (int i = 0; i < panelHome.roleList.roleList.Length; ++i) {
-                panelHome.roleList.roleList[i].btnRole.onClick.AddListener(
-                    () => RoleItemEvent(panelHome.roleList.roleList[i]));
-            }
+            panelHome.missionList.missionList[0].btnMisson.onClick.AddListener(() => MissionItemEvent(panelHome.missionList.missionList[0]));
+            panelHome.missionList.missionList[1].btnMisson.onClick.AddListener(() => MissionItemEvent(panelHome.missionList.missionList[1]));
+            panelHome.roleList.roleList[0].btnRole.onClick.AddListener(() => RoleItemEvent(panelHome.roleList.roleList[0]));
+            panelHome.roleList.roleList[1].btnRole.onClick.AddListener(() => RoleItemEvent(panelHome.roleList.roleList[1]));
         }
 
         private void SendTravelCommand() {
             UIController.Instance.Command(UICommand.SHAN_TRAVEL);
         }
-
+        
         private void MissionItemEvent(View.Home.MissionItem item) {
             if (!item.IsSelscted) {
                 panelHome.missionList.SetMissionItemState(false);
@@ -29,11 +25,12 @@ namespace Ctrl.Home {
             }
             panelHome.mask.gameObject.SetActive(!item.IsSelscted);
             item.BtnState(!item.IsSelscted);
-            panelHome.roleList.SetActive(!item.IsSelscted);
+            panelHome.roleList.SetActive(item.IsSelscted);
         }
 
         private void RoleItemEvent(View.Home.RoleItem item) {
             item.BtnState(!item.IsSelscted);
+            panelHome.roleList.SetBtnState();
         }
 
         private void RefreshRoleList() {

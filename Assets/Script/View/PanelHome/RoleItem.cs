@@ -6,7 +6,6 @@ namespace View.Home {
     public class RoleItem : MonoBehaviour {
         public Image roleIcon;
         public Image selectImage;
-        public Image stateImage;
         public Image recommendedImage;
         public Button btnRole;
 
@@ -21,7 +20,10 @@ namespace View.Home {
 
         public bool IsSelscted
         {
-            set { m_isSelected = value; }
+            set {
+                m_isSelected = value;
+                BtnState(m_isSelected);
+            }
             get { return m_isSelected; }
         }
 
@@ -34,6 +36,7 @@ namespace View.Home {
             m_roleId = id;
             roleIcon.sprite = icon;
             m_recommended = isRecommended;
+            BtnState(false);
         }
 
         public void BtnState(bool isSelected) {
