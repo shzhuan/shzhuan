@@ -22,7 +22,7 @@ namespace View.Home {
         {
             set {
                 m_isSelected = value;
-                BtnState(m_isSelected);
+                SetBtnState(m_isSelected);
             }
             get { return m_isSelected; }
         }
@@ -33,7 +33,7 @@ namespace View.Home {
             SetMissionDetail(detail);
         }
 
-        public void BtnState(bool isSelected) {
+        public void SetBtnState(bool isSelected) {
             m_isSelected = isSelected;
             if (isSelected) {
                 selectImage.color = new Color(selectImage.color.r, selectImage.color.g, selectImage.color.b, 1);
