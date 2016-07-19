@@ -41,6 +41,17 @@ namespace Ctrl.Home {
             panelHome.roleList.SetBtnState();
         }
 
+        private void InitMissionList() {
+            Object prefab = panelHome.missionList.missionPrefab;
+            GameObject mission = Instantiate(prefab) as GameObject;
+            mission.transform.localPosition = mission.transform.localPosition;
+            mission.transform.localScale = Vector3.one;
+            View.Home.MissionItem item = mission.GetComponent<View.Home.MissionItem>();
+            item.btnMisson.onClick.AddListener(() => MissionItemEvent(item));
+        }
+
+        private void RefreshMissionList() { }
+
         private void RefreshRoleList() {
             panelHome.roleList.Init();
         }

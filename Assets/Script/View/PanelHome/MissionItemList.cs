@@ -4,6 +4,7 @@ using System.Collections;
 namespace View.Home {
     public class MissionItemList : MonoBehaviour {
 
+        public Object missionPrefab;
         public MissionItem[] missionList;
 
         public void SetMissionItemState(bool isSelect) {
