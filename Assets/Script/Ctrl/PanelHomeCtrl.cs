@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Ctrl.Home {
     public class PanelHomeCtrl : MonoBehaviour {
@@ -8,6 +9,7 @@ namespace Ctrl.Home {
 
         private bool m_isStart = false;
         private float m_timeSecond = 0f;
+        private List<View.Home.MissionItem> m_missionList = new List<View.Home.MissionItem>();
 
         void Awake() {
             panelHome.btnTravel.onClick.AddListener( SendTravelCommand );
@@ -41,13 +43,22 @@ namespace Ctrl.Home {
             panelHome.roleList.SetBtnState();
         }
 
-        private void InitMissionList() {
+        private void InitMissionList(int missionItemNum) {
+            m_missionList.Clear();
+            for (int i = 0; i < missionItemNum; ++i) {
+                InstantiateMissionItem();
+            }
+        }
+
+        private void InstantiateMissionItem() {
             Object prefab = panelHome.missionList.missionPrefab;
             GameObject mission = Instantiate(prefab) as GameObject;
+            mission.transform.parent = mission.transform.parent;
             mission.transform.localPosition = mission.transform.localPosition;
             mission.transform.localScale = Vector3.one;
             View.Home.MissionItem item = mission.GetComponent<View.Home.MissionItem>();
             item.btnMisson.onClick.AddListener(() => MissionItemEvent(item));
+            m_missionList.Add(item);
         }
 
         private void RefreshMissionList() { }

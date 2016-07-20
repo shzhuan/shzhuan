@@ -13,5 +13,9 @@ namespace View.Home {
             }
         }
 
+        public void SetDate() {
+
+        }
+
     }
 }
