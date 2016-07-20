@@ -8,6 +8,8 @@ namespace Model {
             get { return m_instance; }
         }
 
+        public Mission.MissionDataList missionDataList;
+
         void Awake() {
             m_instance = this;
         }

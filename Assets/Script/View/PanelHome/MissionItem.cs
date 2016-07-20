@@ -6,14 +6,15 @@ namespace View.Home {
     public class MissionItem : MonoBehaviour {
 
         public Image selectImage;
-        public Image missionState; 
+        public Image missionState;
+        public Text missionTitle;
         public Text missionDetail;
         public Button btnMisson;
 
-        private int m_missionId = 0;
+        private string m_missionId = "";
         private bool m_isSelected = false;
 
-        public int MissionID
+        public string MissionID
         {
             get { return m_missionId; }
         }
@@ -27,10 +28,11 @@ namespace View.Home {
             get { return m_isSelected; }
         }
 
-        public void Init(int id, string detail) {
+        public void Init(Model.Mission.MissionData data) {
             missionState.gameObject.SetActive(false);
-            m_missionId = id;
-            SetMissionDetail(detail);
+            m_missionId = data.id;
+            missionTitle.text = data.title;
+            missionDetail.text = data.detail;
         }
 
         public void SetBtnState(bool isSelected) {
@@ -41,10 +43,7 @@ namespace View.Home {
             }
             selectImage.color = new Color(selectImage.color.r, selectImage.color.g, selectImage.color.b, 0.8f);
         }
-
-        private void SetMissionDetail(string detail) {
-            missionDetail.text = detail;
-        }
+        
 
     }
 }

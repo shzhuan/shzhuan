@@ -9,12 +9,10 @@ namespace Ctrl.Home {
 
         private bool m_isStart = false;
         private float m_timeSecond = 0f;
-        private List<View.Home.MissionItem> m_missionList = new List<View.Home.MissionItem>();
+        //private List<View.Home.MissionItem> m_missionList = new List<View.Home.MissionItem>();
 
         void Awake() {
             panelHome.btnTravel.onClick.AddListener( SendTravelCommand );
-            panelHome.missionList.missionList[0].btnMisson.onClick.AddListener(() => MissionItemEvent(panelHome.missionList.missionList[0]));
-            panelHome.missionList.missionList[1].btnMisson.onClick.AddListener(() => MissionItemEvent(panelHome.missionList.missionList[1]));
             panelHome.roleList.roleList[0].btnRole.onClick.AddListener(() => RoleItemEvent(panelHome.roleList.roleList[0]));
             panelHome.roleList.roleList[1].btnRole.onClick.AddListener(() => RoleItemEvent(panelHome.roleList.roleList[1]));
             panelHome.roleList.btnOK.onClick.AddListener( MissionStart );
@@ -44,7 +42,7 @@ namespace Ctrl.Home {
         }
 
         private void InitMissionList(int missionItemNum) {
-            m_missionList.Clear();
+            panelHome.missionList.itemList.Clear();
             for (int i = 0; i < missionItemNum; ++i) {
                 InstantiateMissionItem();
             }
@@ -58,7 +56,7 @@ namespace Ctrl.Home {
             mission.transform.localScale = Vector3.one;
             View.Home.MissionItem item = mission.GetComponent<View.Home.MissionItem>();
             item.btnMisson.onClick.AddListener(() => MissionItemEvent(item));
-            m_missionList.Add(item);
+            panelHome.missionList.itemList.Add(item);
         }
 
         private void RefreshMissionList() { }
@@ -68,9 +66,9 @@ namespace Ctrl.Home {
         }
 
         private void MissionStart() {
-            for (int i = 0; i < panelHome.missionList.missionList.Length; ++i) {
-                if (panelHome.missionList.missionList[i].IsSelscted) {
-                    panelHome.missionList.missionList[i].btnMisson.interactable = false;
+            for (int i = 0; i < panelHome.missionList.itemList.Count; ++i) {
+                if (panelHome.missionList.itemList[i].IsSelscted) {
+                    panelHome.missionList.itemList[i].btnMisson.interactable = false;
                     break;
                 }
             }
