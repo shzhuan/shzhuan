@@ -20,6 +20,7 @@ namespace Ctrl.Home {
 
         void Start() {
             StartCoroutine("CountDown");
+            InitMissionList(Model.GameData.Instance.missionDataList.list.Length);
         }
 
         private void SendTravelCommand() {
@@ -43,6 +44,7 @@ namespace Ctrl.Home {
 
         private void InitMissionList(int missionItemNum) {
             panelHome.missionList.itemList.Clear();
+            panelHome.missionList.SetListWidth(missionItemNum);
             for (int i = 0; i < missionItemNum; ++i) {
                 InstantiateMissionItem();
             }
@@ -51,12 +53,13 @@ namespace Ctrl.Home {
         private void InstantiateMissionItem() {
             Object prefab = panelHome.missionList.missionPrefab;
             GameObject mission = Instantiate(prefab) as GameObject;
-            mission.transform.parent = mission.transform.parent;
+            mission.transform.parent = ((GameObject)prefab).transform.parent;
             mission.transform.localPosition = mission.transform.localPosition;
             mission.transform.localScale = Vector3.one;
             View.Home.MissionItem item = mission.GetComponent<View.Home.MissionItem>();
             item.btnMisson.onClick.AddListener(() => MissionItemEvent(item));
             panelHome.missionList.itemList.Add(item);
+            mission.SetActive(true);
         }
 
         private void RefreshMissionList() { }
@@ -78,7 +81,6 @@ namespace Ctrl.Home {
         }
 
         IEnumerator CountDown() {
-            Debug.Log("121212");
             while (m_isStart) {
                 --m_timeSecond;
                 Debug.Log(m_timeSecond);
