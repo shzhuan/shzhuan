@@ -28,7 +28,7 @@ namespace View.Home {
             get { return m_isSelected; }
         }
 
-        public void Init(Model.Mission.MissionData data) {
+        public void Init(Model.MissionData data) {
             missionState.gameObject.SetActive(false);
             m_missionId = data.id;
             missionTitle.text = data.title;

@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-namespace Model.Mission {
+namespace Model{
     [Serializable]
     public class MissionData : MonoBehaviour {
         public string id = "";

@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace Model{
-    public class MissionDataList : MonoBehaviour {
-        public MissionData[] list;
+namespace Model {
+    public class RoleDataList : MonoBehaviour {
+        public RoleData[] list;
 
-        public MissionData GetMission(string id) {
+        public RoleData GetRole(string id) {
             if (string.IsNullOrEmpty(id)) {
                 return null;
             }
