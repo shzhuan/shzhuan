@@ -15,5 +15,6 @@ namespace Model {
         public float mentalityNum = 0f;
         public float charismaNum = 0f;
         public bool isIdle = true;
+        public Sprite icon = null;
     }
 }

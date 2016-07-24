@@ -6,9 +6,13 @@ namespace Ctrl.Home {
     public class PanelHomeCtrl : MonoBehaviour {
 
         public View.Home.PanelHome panelHome = null;
-
+        
         private bool m_isStart = false;
         private float m_timeSecond = 0f;
+
+        private Model.GameData GameData {
+            get { return Model.GameData.Instance; }
+        }
 
         void Awake() {
             panelHome.btnTravel.onClick.AddListener( SendTravelCommand );
@@ -17,37 +21,57 @@ namespace Ctrl.Home {
 
         void Start() {
             StartCoroutine("CountDown");
-            InitMissionList(Model.GameData.Instance.missionDataList.list.Length);
-            InitRoleList(Model.GameData.Instance.roleDataList.list.Length);
+            InitMissionList(GameData.missionDataList);
+            InitRoleList(GameData.roleDataList);
         }
 
+        #region Events   
         private void SendTravelCommand() {
             UIController.Instance.Command(UICommand.SHAN_TRAVEL);
         }
 
-        #region ItemEvent        
+        private void MissionStart() {
+            for (int i = 0; i < panelHome.missionList.itemList.Count; ++i) {
+                if (panelHome.missionList.itemList[i].IsSelscted) {
+                    panelHome.missionList.itemList[i].btnMisson.interactable = false;
+                    break;
+                }
+            }
+            ChangeRoleState();
+            panelHome.roleList.SetActive(false);
+            m_timeSecond = 10f;
+            m_isStart = true;
+        }
+
         private void MissionItemEvent(View.Home.MissionItem item) {
             if (!item.IsSelscted) {
-                panelHome.missionList.SetMissionItemState(false);
+                panelHome.missionList.SetAllMissionItemState(false);
                 panelHome.roleList.Init();
             }
+            RefreshRoleList();
             panelHome.mask.gameObject.SetActive(!item.IsSelscted);
             item.SetBtnState(!item.IsSelscted);
             panelHome.roleList.SetActive(item.IsSelscted);
         }
 
         private void RoleItemEvent(View.Home.RoleItem item) {
-            item.BtnState(!item.IsSelscted);
+            if (!item.IsSelscted) {
+                panelHome.roleList.SetAllRoleItemState(false);
+            }
+            item.SetBtnState(!item.IsSelscted);
             panelHome.roleList.SetBtnState();
         }
         #endregion
 
-        private void InitMissionList(int missionItemNum) {
-            panelHome.missionList.itemList.Clear();
+        #region Misson
+        private void InitMissionList(Model.MissionDataList missionList) {
+            int missionItemNum = missionList.list.Length;
+            panelHome.missionList.ListClear();
             panelHome.missionList.SetListWidth(missionItemNum);
             for (int i = 0; i < missionItemNum; ++i) {
                 InstantiateMissionItem();
             }
+            panelHome.missionList.SetDate(missionList);
         }
 
         private void InstantiateMissionItem() {
@@ -61,13 +85,17 @@ namespace Ctrl.Home {
             panelHome.missionList.itemList.Add(item);
             mission.SetActive(true);
         }
+        #endregion
 
-        private void InitRoleList(int roleItemNum) {
-            panelHome.roleList.itemList.Clear();
+        #region Role
+        private void InitRoleList(Model.RoleDataList roleList) {
+            int roleItemNum = roleList.list.Length;
+            panelHome.roleList.ListClear();
             panelHome.roleList.SetListWidth(roleItemNum);
             for (int i = 0; i < roleItemNum; ++i) {
                 InstantiateRoleItem();
             }
+            panelHome.roleList.SetDate(roleList);
         }
 
         private void InstantiateRoleItem() {
@@ -82,25 +110,22 @@ namespace Ctrl.Home {
             role.SetActive(true);
         }
 
-
-
-        private void RefreshMissionList() { }
-
         private void RefreshRoleList() {
-            panelHome.roleList.Init();
+            for (int i = 0; i < panelHome.roleList.itemList.Count; ++i) {
+                bool active = GameData.roleDataList.list[i].isIdle;
+                panelHome.roleList.itemList[i].gameObject.SetActive(active);
+            }
         }
 
-        private void MissionStart() {
-            for (int i = 0; i < panelHome.missionList.itemList.Count; ++i) {
-                if (panelHome.missionList.itemList[i].IsSelscted) {
-                    panelHome.missionList.itemList[i].btnMisson.interactable = false;
-                    break;
+        private void ChangeRoleState() {
+            for (int i = 0; i < panelHome.roleList.itemList.Count; ++i) {
+                if (panelHome.roleList.itemList[i].IsSelscted) {
+                    Model.RoleData role = GameData.roleDataList.GetRole(panelHome.roleList.itemList[i].RoleID);
+                    role.isIdle = false;
                 }
             }
-            panelHome.roleList.SetActive(false);
-            m_timeSecond = 10f;
-            m_isStart = true;
         }
+        #endregion
 
         IEnumerator CountDown() {
             while (m_isStart) {

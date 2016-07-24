@@ -12,10 +12,10 @@ namespace View.Home {
 
         public void SetListWidth(int missionNum) {
             listScope.sizeDelta = new Vector2 (missionNum * m_missionItemWidth, listScope.sizeDelta.y);
-            listScope.localPosition = Vector3.zero;
+            listScope.anchoredPosition = Vector2.zero;
         }
 
-        public void SetMissionItemState(bool isSelect) {
+        public void SetAllMissionItemState(bool isSelect) {
             for (int i = 0; i < itemList.Count; ++i) {
                 itemList[i].IsSelscted = isSelect;
             }
@@ -25,6 +25,13 @@ namespace View.Home {
             for (int i = 0; i < itemList.Count; ++i) {
                 itemList[i].Init(dataList.list[i]);
             }
+        }
+
+        public void ListClear() {
+            for (int i = 0; i < itemList.Count; ++i) {
+                DestroyImmediate(itemList[i]);
+            }
+            itemList.Clear();
         }
 
     }

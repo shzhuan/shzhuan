@@ -25,11 +25,12 @@ namespace View.Home {
         public void Init() {
             SetRoleItemState(false);
             btnOK.gameObject.SetActive(false);
+            listScope.anchoredPosition = Vector2.zero;
         }
 
         public void SetListWidth(int roleNum) {
             listScope.sizeDelta = new Vector2(roleNum * m_roleItemWidth, listScope.sizeDelta.y);
-            listScope.localPosition = Vector3.zero;
+            listScope.anchoredPosition = Vector2.zero;
         }
 
         public void SetActive(bool value) {
@@ -38,6 +39,12 @@ namespace View.Home {
         }
 
         public void SetRoleItemState(bool isSelect) {
+            for (int i = 0; i < itemList.Count; ++i) {
+                itemList[i].IsSelscted = isSelect;
+            }
+        }
+
+        public void SetAllRoleItemState(bool isSelect) {
             for (int i = 0; i < itemList.Count; ++i) {
                 itemList[i].IsSelscted = isSelect;
             }
@@ -55,8 +62,15 @@ namespace View.Home {
 
         public void SetDate(Model.RoleDataList dataList) {
             for (int i = 0; i < itemList.Count; ++i) {
-                //itemList[i].Init(dataList.list[i]);
+                itemList[i].Init(dataList.list[i], false);
             }
+        }
+
+        public void ListClear() {
+            for (int i = 0; i < itemList.Count; ++i) {
+                DestroyImmediate(itemList[i]);
+            }
+            itemList.Clear();
         }
 
     }
