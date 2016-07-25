@@ -111,10 +111,15 @@ namespace Ctrl.Home {
         }
 
         private void RefreshRoleList() {
+            int activeNum = 0;
             for (int i = 0; i < panelHome.roleList.itemList.Count; ++i) {
                 bool active = GameData.roleDataList.list[i].isIdle;
                 panelHome.roleList.itemList[i].gameObject.SetActive(active);
+                if (active) {
+                    ++activeNum;
+                }
             }
+            panelHome.roleList.SetListWidth(activeNum);
         }
 
         private void ChangeRoleState() {
