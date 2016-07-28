@@ -11,12 +11,12 @@ namespace View.Home {
         public Text missionDetail;
         public Button btnMisson;
 
-        private string m_missionId = "";
+        private string m_Id = "";
         private bool m_isSelected = false;
 
         public string MissionID
         {
-            get { return m_missionId; }
+            get { return m_Id; }
         }
 
         public bool IsSelscted
@@ -30,7 +30,7 @@ namespace View.Home {
 
         public void Init(Model.MissionData data) {
             missionState.gameObject.SetActive(false);
-            m_missionId = data.id;
+            m_Id = data.id;
             missionTitle.text = data.title;
             missionDetail.text = data.detail;
         }

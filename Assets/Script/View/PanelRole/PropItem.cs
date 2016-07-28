@@ -15,5 +15,12 @@ namespace View.Role {
             get { return m_Id; }
         }
 
+        public void Init(Model.PropData data) {
+            m_Id = data.id;
+            propName.text = data.propName;
+            icon.sprite = data.icon;
+            num.text = data.num.ToString();
+        }
+
     }
 }

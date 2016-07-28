@@ -10,13 +10,13 @@ namespace View.Home {
         public Text roleName;
         public Button btnRole;
 
-        private string m_roleId;
+        private string m_Id;
         private bool m_isSelected = false;
         private bool m_recommended = false;
 
         public string RoleID
         {
-            get { return m_roleId; }
+            get { return m_Id; }
         }
 
         public bool IsSelscted
@@ -34,7 +34,7 @@ namespace View.Home {
         }
 
         public void Init(Model.RoleData data, bool isRecommended) {
-            m_roleId = data.id;
+            m_Id = data.id;
             roleName.text = data.roleName;
             roleIcon.sprite = data.icon;
             m_recommended = isRecommended;

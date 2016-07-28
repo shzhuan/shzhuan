@@ -9,6 +9,7 @@ namespace Model {
         public string type = "";
         public string propName = "";
         public string description = "";
+        public float num = 0f;
         public float favorNum = 0f;
         public float loyaltyNum = 0f;
         public float forceNum = 0f;
