@@ -1,15 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PanelRole : MonoBehaviour {
+namespace View.Role {
+    public class PanelRole : MonoBehaviour {
+        public PropItemList itemList;
+        public RoleAttributeInfo attributeInfo;
+        public AttributeChangeInfo changeInfo;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    }
 }

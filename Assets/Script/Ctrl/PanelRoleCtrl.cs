@@ -1,15 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PanelRoleCtrl : MonoBehaviour {
+namespace Ctrl.Role {
+    public class PanelRoleCtrl : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+        public View.Role.PanelRole panelRole = null;
+
+        private Model.GameData GameData
+        {
+            get { return Model.GameData.Instance; }
+        }
+
+        private void PropItemEvent(View.Role.PropItem item) {
+            Model.PropData data = GameData.propDataList.GetProp(item.PropID);
+            panelRole.changeInfo.SetData(data);
+            panelRole.changeInfo.gameObject.SetActive(true);
+        }
+
+    }
 }

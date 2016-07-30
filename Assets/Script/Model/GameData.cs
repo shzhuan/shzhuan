@@ -10,6 +10,7 @@ namespace Model {
 
         public MissionDataList missionDataList;
         public RoleDataList roleDataList;
+        public PropDataList propDataList;
 
         void Awake() {
             m_instance = this;
