@@ -102,7 +102,7 @@ namespace Ctrl.Home {
             Object prefab = panelHome.roleList.rolePrefab;
             GameObject role = Instantiate(prefab) as GameObject;
             role.transform.parent = ((GameObject)prefab).transform.parent;
-            role.transform.localPosition = role.transform.localPosition;
+            role.transform.localPosition = Vector3.zero;
             role.transform.localScale = Vector3.one;
             View.Home.RoleItem item = role.GetComponent<View.Home.RoleItem>();
             item.btnRole.onClick.AddListener(() => RoleItemEvent(item));

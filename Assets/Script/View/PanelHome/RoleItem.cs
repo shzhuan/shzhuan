@@ -13,6 +13,7 @@ namespace View.Home {
         private string m_Id;
         private bool m_isSelected = false;
         private bool m_recommended = false;
+        private bool m_isStart = false;
 
         public string RoleID
         {
@@ -33,6 +34,10 @@ namespace View.Home {
             get { return m_recommended; }
         }
 
+        void Start() {
+            StartCoroutine("ChangeItemSize");
+        }
+
         public void Init(Model.RoleData data, bool isRecommended) {
             m_Id = data.id;
             roleName.text = data.roleName;
@@ -48,6 +53,13 @@ namespace View.Home {
                 return;
             }
             selectImage.gameObject.SetActive(false);
+        }
+        
+        IEnumerator ChangeItemSize() {
+            while (m_isStart) {
+                roleIcon.rectTransform.sizeDelta += new Vector2(2, 0f);
+                yield return new WaitForSeconds(0.01f);
+            }
         }
 
     }
