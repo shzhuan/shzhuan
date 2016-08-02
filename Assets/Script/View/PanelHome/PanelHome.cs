@@ -9,7 +9,7 @@ namespace View.Home {
         public Button btnTravel;
         public Button btnShop;
         public Image mask;
+        public Image testImage;
         
-
     }
 }

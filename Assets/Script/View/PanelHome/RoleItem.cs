@@ -62,5 +62,15 @@ namespace View.Home {
             }
         }
 
+        IEnumerator SliderImageMove() {
+            while (true) {
+                //if (testImage.transform.localPosition.x > 82f) {
+                  //  testImage.transform.localPosition = new Vector3(-82, 0, 0);
+                //}
+                //testImage.transform.localPosition += new Vector3(1, 0f);
+                yield return new WaitForSeconds(0.01f);
+            }
+        }
+
     }
 }
