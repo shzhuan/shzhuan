@@ -35,7 +35,8 @@ namespace View.Home {
         }
 
         void Start() {
-            StartCoroutine("ChangeItemSize");
+            StartCoroutine("ItemSizeZoomIn");
+            StartCoroutine("ItemSizeZoomOut");
         }
 
         public void Init(Model.RoleData data, bool isRecommended) {
@@ -54,13 +55,21 @@ namespace View.Home {
             }
             selectImage.gameObject.SetActive(false);
         }
-        
-        IEnumerator ChangeItemSize() {
+
+        IEnumerator ItemSizeZoomIn() {
             while (m_isStart) {
                 roleIcon.rectTransform.sizeDelta += new Vector2(2, 0f);
                 yield return new WaitForSeconds(0.01f);
             }
         }
+
+        IEnumerator ItemSizeZoomOut() {
+            while (m_isStart) {
+                roleIcon.rectTransform.sizeDelta += new Vector2(2, 0f);
+                yield return new WaitForSeconds(0.01f);
+            }
+        }
+
 
         IEnumerator SliderImageMove() {
             while (true) {
