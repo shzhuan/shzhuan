@@ -16,5 +16,9 @@ namespace Model {
         public float charismaNum = 0f;
         public bool isIdle = true;
         public Sprite icon = null;
+
+        public int hpNum = 0;
+        public int ppNum = 0;
+        public int agilityNum = 0;
     }
 }
