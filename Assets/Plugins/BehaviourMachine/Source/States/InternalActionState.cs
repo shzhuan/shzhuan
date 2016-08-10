@@ -102,7 +102,7 @@ namespace BehaviourMachine {
         /// <summary>
         /// Unity timed events.
         /// </summary>
-        public event SimpleCallback onEnable, onDisable, start, onDestroy;
+        public event SimpleCallback onEnable, onDisable, start, onDestroy, update;
         #endregion Events
 
         
