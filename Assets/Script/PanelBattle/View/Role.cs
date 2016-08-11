@@ -11,7 +11,9 @@ namespace View.Battle {
         public Text hpNum;
         public Text ppNum;
         public GameObject commandBtnList;
+        public GameObject skillPrefab;
         public bool isShake = false;
+        public bool isFlash = false;
 
         private int m_hp = 0;
         private int m_maxHp = 0;
@@ -20,6 +22,9 @@ namespace View.Battle {
         private Vector3 m_position = Vector3.zero;
         private float m_shakeTime = 0.5f;
         private float m_shakeRange = 6f;
+        private float m_flashTime = 0.3f;
+        private float m_repeatTime = 0.05f;
+        private bool m_isFlash = false;
 
         public int HPNum {
             set {
@@ -56,6 +61,10 @@ namespace View.Battle {
             }
         }
 
+        void Start() {
+            InvokeRepeating("RoleFlash", 0f, m_repeatTime);
+        }
+
         void Update() {
             if (isShake) {
                 ShakeWithTime();
@@ -86,9 +95,23 @@ namespace View.Battle {
                 this.transform.localPosition = m_position + Random.insideUnitSphere * m_shakeRange;
                 m_shakeTime -= Time.deltaTime;
             } else {
-                m_shakeTime = 0;
                 isShake = false;
+                m_shakeTime = 0.5f;
                 this.transform.localPosition = m_position;
+            }
+        }
+
+        private void RoleFlash() {
+            if (isFlash) {
+                if (m_flashTime > 0) {
+                    m_isFlash = !m_isFlash;
+                    btnRole.gameObject.SetActive(m_isFlash);
+                    m_flashTime -= Time.deltaTime;
+                } else {
+                    isFlash = false;
+                    m_flashTime = 0.3f;
+                    btnRole.gameObject.SetActive(true);
+                }
             }
         }
 
