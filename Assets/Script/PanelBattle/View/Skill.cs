@@ -11,27 +11,29 @@ namespace View.Battle {
         public bool isPlay = false;
         public bool isLoop = false;
         public float delayTime = 0f;
-        public int frameTime = 24;
+        public float frameTime = 0.04f; //0.04=1/24
 
         private float m_timeCnt = 0;
-        
+        private float m_frameCnt = 0;
+
         void Update() {
             if (isPlay && SkillType == Type.FRAME_ANIMATION) {
                 if (m_timeCnt >= delayTime) {
-                    int frameCnt = (int)((m_timeCnt - delayTime) / frameTime);
-                    if (frameCnt < spriteList.Count) {
-                        spriteRenderer.sprite = spriteList[frameCnt];
-                    }
-                    if (isLoop) {
-                        spriteRenderer.sprite = spriteList[frameCnt % spriteList.Count];
+                    m_frameCnt = (int)((m_timeCnt - delayTime) / frameTime);
+                    if (m_frameCnt < spriteList.Count) {
+                        spriteRenderer.sprite = spriteList[(int)m_frameCnt];
                     } else {
-                        spriteRenderer.sprite = null;
-                        isPlay = false;
+                        if (isLoop) {
+                            spriteRenderer.sprite = spriteList[0];
+                        } else {
+                            spriteRenderer.sprite = null;
+                            isPlay = false;
+                        }
+                        m_frameCnt = 0f;
                         m_timeCnt = 0;
                     }
-                } else {
-                    m_timeCnt += Time.deltaTime;
                 }
+                m_timeCnt += Time.deltaTime;
             }
         }
 
