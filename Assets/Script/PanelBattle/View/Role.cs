@@ -90,6 +90,18 @@ namespace View.Battle {
             btnRole.interactable = active;
         }
 
+        public void PlaySkillOnRole() {
+            GameObject skillObject = Instantiate(skillPrefab) as GameObject;
+            skillObject.transform.parent = this.transform;
+            skillObject.transform.localPosition = Vector3.zero;
+            skillObject.transform.localScale = Vector3.one * 100;
+            skillObject.GetComponent<SkillAnimation>().isPlay = true;
+        }
+
+        public void PlaySkillOnRole(Vector3 position) { }
+
+        public void PlaySkillOnEnemy(Vector3 position) { }
+
         private void ShakeWithTime() {
             if (m_shakeTime > 0) {
                 this.transform.localPosition = m_position + Random.insideUnitSphere * m_shakeRange;

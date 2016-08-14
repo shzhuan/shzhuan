@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 namespace View.Battle {
-    public class Skill : MonoBehaviour {
-        public enum Type { FRAME_ANIMATION, PARTICLE }
-        public Type SkillType = Type.FRAME_ANIMATION;
+    [Serializable]
+    public class SkillAnimation : MonoBehaviour {
+        public enum AnimationType { FRAME_ANIMATION, PARTICLE }
+        public AnimationType animationType = AnimationType.FRAME_ANIMATION;
         public SpriteRenderer spriteRenderer;
         public List<Sprite> spriteList = new List<Sprite>();
         public bool isPlay = false;
@@ -17,7 +19,7 @@ namespace View.Battle {
         private float m_frameCnt = 0;
 
         void Update() {
-            if (isPlay && SkillType == Type.FRAME_ANIMATION) {
+            if (isPlay && animationType == AnimationType.FRAME_ANIMATION) {
                 if (m_timeCnt >= delayTime) {
                     m_frameCnt = (int)((m_timeCnt - delayTime) / frameTime);
                     if (m_frameCnt < spriteList.Count) {
