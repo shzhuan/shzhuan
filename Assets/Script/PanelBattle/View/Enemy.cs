@@ -2,14 +2,16 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour {
-    public Slider hpBar;
+namespace View.Battle {
+    public class Enemy : MonoBehaviour {
+        public Slider hpBar;
 
-	void Start () {
-        hpBar.value = 1;
-	}
-	
-	void Update () {
-	
-	}
+        void Start() {
+            hpBar.value = 1;
+        }
+
+        void Update() {
+
+        }
+    }
 }
