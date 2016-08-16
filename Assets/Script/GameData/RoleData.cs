@@ -20,5 +20,6 @@ namespace Model {
         public int hpNum = 0;
         public int ppNum = 0;
         public int agilityNum = 0;
+        public string skillId = "";
     }
 }

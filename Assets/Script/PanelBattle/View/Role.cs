@@ -19,6 +19,7 @@ namespace View.Battle {
         private int m_maxHp = 0;
         private int m_pp = 0;
         private int m_maxPp = 0;
+        private string m_skillId = "";
         private Vector3 m_position = Vector3.zero;
         private float m_shakeTime = 0.5f;
         private float m_shakeRange = 6f;
@@ -61,6 +62,10 @@ namespace View.Battle {
             }
         }
 
+        public string SkillID {
+            get { return m_skillId; }
+        }
+
         void Start() {
             InvokeRepeating("RoleFlash", 0f, m_repeatTime);
         }
@@ -83,6 +88,7 @@ namespace View.Battle {
             m_maxHp = data.hpNum;
             m_pp = data.ppNum;
             m_maxPp = data.ppNum;
+            m_skillId = data.skillId;
             m_position = this.transform.localPosition;
         }
 
