@@ -8,6 +8,7 @@ namespace Model {
         public string id;
         public enum SkillType {DAMAGE, BUFF, DEBUFF};
         public SkillType skillType = SkillType.DAMAGE;
+        public string skillTypeId;
         public string skillName;
         public string skilldetail;
         public int damageNum;

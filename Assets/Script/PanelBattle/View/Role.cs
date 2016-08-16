@@ -101,6 +101,7 @@ namespace View.Battle {
             }
         }
 
+        //Start invoke
         private void RoleFlash() {
             if (isFlash) {
                 if (m_flashTime > 0) {

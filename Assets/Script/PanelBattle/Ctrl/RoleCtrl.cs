@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Ctrl.Battle {
     public class RoleCtrl : MonoBehaviour {
         public View.Battle.Role role;
-        public List<GameObject> RoleSkillList;
+        public List<GameObject> skillList;
 
         public void AtkToEnemy(View.Battle.Enemy enemy) { }
 
