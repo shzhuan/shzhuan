@@ -7,45 +7,74 @@ namespace Ctrl.Battle {
 
         private Dictionary<string, GameObject> m_skillList = new Dictionary<string, GameObject>();
 
+        void Start() {
+        }
+
         public void BattleEnd() {
             m_skillList.Clear();
         }
 
-        public void PlayEffect(View.Battle.Role source, Transform target) {
-            if (m_skillList.ContainsKey(source.SkillID)) {
-                m_skillList[source.SkillID].GetComponent<View.Battle.SkillAnimation>().isPlay = true;
+        public void SkillAtk() {
+
+        }
+
+        private void PlayEffect(string skillId, Transform target) {
+            if (m_skillList.ContainsKey(skillId)) {
+                m_skillList[skillId].GetComponent<View.Battle.SkillAnimation>().isPlay = true;
                 return; 
             }
-            Object skillPrefab = null;//To Do
+            Object skillPrefab = Resources.Load("Prefab/Skill/" + skillId);
             GameObject skillObject = Instantiate(skillPrefab) as GameObject;
             skillObject.transform.parent = target;
             skillObject.transform.localPosition = Vector3.zero;
             skillObject.transform.localScale = Vector3.one;
-            m_skillList.Add(source.SkillID, skillObject);
+            m_skillList.Add(skillId, skillObject);
             skillObject.GetComponent<View.Battle.SkillAnimation>().isPlay = true;
         }
 
-        private void SkillEffect(Model.SkillData skill) {
+        private void SkillEffectToRole(View.Battle.Role role, Model.SkillData skill) {
             switch (skill.skillType) {
                 case Model.SkillData.SkillType.DAMAGE:
-                    SkillDamage();
+                    SkillDamageToRole(role, skill);
                     break;
                 case Model.SkillData.SkillType.BUFF:
-                    SkillBuff();
+                    SkillBuffToRole(role, skill);
                     break;
                 case Model.SkillData.SkillType.DEBUFF:
-                    SkillDeBuff();
+                    SkillDeBuffToRole(role, skill);
                     break;
                 default:
                     break;
             }
         }
 
-        private void SkillDamage() { }
+        private void SkillEffectToEnemy(View.Battle.Enemy enemy, Model.SkillData skill) {
+            switch (skill.skillType) {
+                case Model.SkillData.SkillType.DAMAGE:
+                    SkillDamageToEnemy(enemy, skill);
+                    break;
+                case Model.SkillData.SkillType.BUFF:
+                    SkillBuffToEnemy(enemy, skill);
+                    break;
+                case Model.SkillData.SkillType.DEBUFF:
+                    SkillDeBuffToEnemy(enemy, skill);
+                    break;
+                default:
+                    break;
+            }
+        }
 
-        private void SkillBuff() { }
+        private void SkillDamageToRole(View.Battle.Role role, Model.SkillData skill) { }
 
-        private void SkillDeBuff() { }
+        private void SkillBuffToRole(View.Battle.Role role, Model.SkillData skill) { }
+
+        private void SkillDeBuffToRole(View.Battle.Role role, Model.SkillData skill) { }
+
+        private void SkillDamageToEnemy(View.Battle.Enemy enemy, Model.SkillData skill) { }
+
+        private void SkillBuffToEnemy(View.Battle.Enemy enemy, Model.SkillData skill) { }
+
+        private void SkillDeBuffToEnemy(View.Battle.Enemy enemy, Model.SkillData skill) { }
 
     }
 }
