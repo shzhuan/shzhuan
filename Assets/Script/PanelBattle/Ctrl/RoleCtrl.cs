@@ -7,11 +7,11 @@ namespace Ctrl.Battle {
         public View.Battle.Role role;
         public List<GameObject> skillList;
 
-        public void AtkToEnemy(View.Battle.Enemy enemy) { }
+        //public void AtkToEnemy(View.Battle.Enemy enemy) { }
 
         public void SkillToRole(View.Battle.Role role) { }
 
-        public void SkillToEnemy(View.Battle.Enemy enemy) { }
+        //public void SkillToEnemy(View.Battle.Enemy enemy) { }
 
         private void PlaySkillOnRole() {
             GameObject skillObject = Instantiate(role.skillPrefab) as GameObject;
@@ -29,7 +29,7 @@ namespace Ctrl.Battle {
             skillObject.GetComponent<View.Battle.SkillAnimation>().isPlay = true;
         }
 
-        private void PlaySkillOnEnemy(View.Battle.Enemy enemy, Vector3 position) {
+        private void PlaySkillOnEnemy(View.Battle.Role enemy, Vector3 position) {
             GameObject skillObject = Instantiate(role.skillPrefab) as GameObject;
             skillObject.transform.parent = enemy.transform;
             skillObject.transform.localPosition = Vector3.zero;

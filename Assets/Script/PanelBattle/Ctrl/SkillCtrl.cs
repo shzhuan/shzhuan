@@ -48,7 +48,7 @@ namespace Ctrl.Battle {
             }
         }
 
-        private void SkillEffectToEnemy(View.Battle.Enemy enemy, Model.SkillData skill) {
+        private void SkillEffectToEnemy(View.Battle.Role enemy, Model.SkillData skill) {
             switch (skill.skillType) {
                 case Model.SkillData.SkillType.DAMAGE:
                     SkillDamageToEnemy(enemy, skill);
@@ -64,17 +64,21 @@ namespace Ctrl.Battle {
             }
         }
 
-        private void SkillDamageToRole(View.Battle.Role role, Model.SkillData skill) { }
+        private void SkillDamageToRole(View.Battle.Role role, Model.SkillData skill) {
+            role.HPNum -= skill.damageNum;
+        }
 
         private void SkillBuffToRole(View.Battle.Role role, Model.SkillData skill) { }
 
         private void SkillDeBuffToRole(View.Battle.Role role, Model.SkillData skill) { }
 
-        private void SkillDamageToEnemy(View.Battle.Enemy enemy, Model.SkillData skill) { }
+        private void SkillDamageToEnemy(View.Battle.Role enemy, Model.SkillData skill) {
+            enemy.HPNum -= skill.damageNum;
+        }
 
-        private void SkillBuffToEnemy(View.Battle.Enemy enemy, Model.SkillData skill) { }
+        private void SkillBuffToEnemy(View.Battle.Role enemy, Model.SkillData skill) { }
 
-        private void SkillDeBuffToEnemy(View.Battle.Enemy enemy, Model.SkillData skill) { }
+        private void SkillDeBuffToEnemy(View.Battle.Role enemy, Model.SkillData skill) { }
 
     }
 }
