@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 
 namespace Ctrl.Battle {
     public class SkillCtrl : MonoBehaviour {
@@ -16,6 +17,34 @@ namespace Ctrl.Battle {
 
         public void SkillAtk() {
 
+        }
+
+        private Dictionary<string, Model.SkillData> LoadXml() {
+            string name = "Skill";
+            string path = Application.dataPath + "/Resources/XML/" + name + ".xml";
+            XmlReader reader = new XmlTextReader(path);
+            Dictionary<string, Model.SkillData> skillDic = new Dictionary<string, Model.SkillData>();
+            while (reader.Read()) {
+                if (reader.NodeType == XmlNodeType.Element) {
+                    if (reader.LocalName == "SKILL") {
+                        Model.SkillData data = new Model.SkillData();
+                        for (int i = 0; i < reader.AttributeCount; i++) {
+                            reader.MoveToAttribute(i);
+                            if (reader.Name == "ID") {
+                                data.id = reader.Value;
+                            } else if (reader.Name == "Type") {
+                                data.skillTypeId = reader.Value;
+                            } else if (reader.Name == "Num") {
+                                data.buffNum = int.Parse(reader.Value);
+                            }
+                        }
+                        if (!skillDic.ContainsKey(data.id)) {
+                            skillDic.Add(data.id, data);
+                        }
+                    }
+                }
+            }
+            return skillDic;
         }
 
         private void PlayEffect(string skillId, Transform target) {
