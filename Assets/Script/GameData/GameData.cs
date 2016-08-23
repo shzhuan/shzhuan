@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 
-namespace Model { 
+namespace Model {
     public class GameData : MonoBehaviour {
         private static GameData m_instance;
         public static GameData Instance {
@@ -15,61 +15,54 @@ namespace Model {
         public PropDataList propDataList;
         public List<SkillData> skillDataList = new List<SkillData>();
 
+        private const string m_roleDataXMLFileNam = "RoleDataXML";
+        private const string m_skillDataXMLFileNam = "SkillDataXML";
+
         void Awake() {
             m_instance = this;
         }
 
-        private Dictionary<string, Model.SkillData> LoadXml() {
-            string name = "Skill";
-            string path = Application.dataPath + "/Resources/XML/" + name + ".xml";
-            XmlReader reader = new XmlTextReader(path);
-            Dictionary<string, Model.SkillData> skillDic = new Dictionary<string, Model.SkillData>();
-            while (reader.Read()) {
-                if (reader.NodeType == XmlNodeType.Element) {
-                    if (reader.LocalName == "SKILL") {
-                        Model.SkillData data = new Model.SkillData();
-                        for (int i = 0; i < reader.AttributeCount; i++) {
-                            reader.MoveToAttribute(i);
-                            if (reader.Name == "ID") {
-                                data.id = reader.Value;
-                            } else if (reader.Name == "Type") {
-                                data.skillTypeId = reader.Value;
-                            } else if (reader.Name == "Num") {
-                                data.buffNum = int.Parse(reader.Value);
-                            }
-                        }
-                        if (!skillDic.ContainsKey(data.id)) {
-                            skillDic.Add(data.id, data);
-                        }
-                    }
-                }
-            }
-            return skillDic;
-        }
-
-        private void loadXmlPlist() {
-            string name = "Skill";
-            string filePath = Application.dataPath + "/Resources/XML/" + name + ".xml";
-            /*if (File.Exists(filePath)) {
-                XmlDocument xmlDoc = new XmlDocument();
-                xmlDoc.Load(filePath);
-                XmlNodeList node = xmlDoc.SelectSingleNode("plist").ChildNodes;
-                foreach (XmlElement nodeList in node) {
-                    foreach (XmlElement xe in nodeList) {
-                        if (xe.Name == "array") {
-                            int i = 0;
-                            _tips = new string[xe.ChildNodes.Count];
-                            foreach (XmlElement xe1 in xe.ChildNodes) {
-                                //                          Debug.Log(xe1.InnerText);  
-                                _tips[i] = xe1.InnerText;
-                                i++;
-                            }
-                            break;
+        private void LoadSkillDataXml() {
+            string path = Application.dataPath + "/Resources/XML/" + m_skillDataXMLFileNam + ".xml";
+            XmlReader skillDataReader = new XmlTextReader(path);
+            while (skillDataReader.Read()) {
+                if (skillDataReader.LocalName == "SkillData") {
+                    SkillData data = new SkillData();
+                    for (int i = 0; i < skillDataReader.AttributeCount; ++i) {
+                        skillDataReader.MoveToAttribute(i);
+                        switch (skillDataReader.LocalName) {
+                            case "ID":
+                                data.id = skillDataReader.Value;
+                                break;
+                            case "Name":
+                                data.skillName = skillDataReader.Value;
+                                break;
+                            case "Detail":
+                                data.detail = skillDataReader.Value;
+                                break;
+                            case "HP":
+                                data.hpNum = float.Parse(skillDataReader.Value);
+                                break;
+                            case "MP":
+                                data.mpNum = float.Parse(skillDataReader.Value);
+                                break;
+                            case "ATK":
+                                data.atkNum = float.Parse(skillDataReader.Value);
+                                break;
+                            case "DEF":
+                                data.defNum = float.Parse(skillDataReader.Value);
+                                break;
+                            case "DEX":
+                                data.dexNum = float.Parse(skillDataReader.Value);
+                                break;
+                            case "LUK":
+                                data.lukNum = float.Parse(skillDataReader.Value);
+                                break;
                         }
                     }
+                    skillDataList.Add(data);
                 }
             }
-            */
         }
 
     }

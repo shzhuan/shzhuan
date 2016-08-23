@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?> 
+<SkillDataList>
+  <SkillData ID="s000" Name="AAA" Detail="CCC" HP="0" MP="10" ATK="20" DEF="0" DEX="-2" LUK="0.5"/>
+  <SkillData ID="s001" Name="AAA" Detail="CCC" HP="0" MP="10" ATK="20" DEF="0" DEX="-2" LUK="0.5"/>
+  <SkillData ID="s002" Name="AAA" Detail="CCC" HP="0" MP="10" ATK="20" DEF="0" DEX="-2" LUK="0.5"/>
+</SkillDataList>

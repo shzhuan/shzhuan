@@ -4,17 +4,15 @@ using System;
 
 namespace Model {
     [Serializable]
-    public class SkillData : MonoBehaviour {
+    public class SkillData {
         public string id;
-        public enum SkillType {DAMAGE, BUFF, DEBUFF};
-        public SkillType skillType = SkillType.DAMAGE;
-        public string skillTypeId;
-        public string skillName;
-        public string skilldetail;
-        public int damageNum;
-        public int buffNum;
-        public int deBuffNum;
-        public float continueTime;
-        public View.Battle.SkillAnimation skillAnimation;
+        public string skillName = "";
+        public string detail = "";
+        public float hpNum = 0;
+        public float mpNum = 0;
+        public float atkNum = 0;
+        public float defNum = 0;
+        public float dexNum = 0;
+        public float lukNum = 0;
     }
 }

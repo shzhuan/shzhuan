@@ -19,7 +19,7 @@ namespace Ctrl.Battle {
 
         }
 
-        private Dictionary<string, Model.SkillData> LoadXml() {
+        /*private Dictionary<string, Model.SkillData> LoadXml() {
             string name = "Skill";
             string path = Application.dataPath + "/Resources/XML/" + name + ".xml";
             XmlReader reader = new XmlTextReader(path);
@@ -45,7 +45,7 @@ namespace Ctrl.Battle {
                 }
             }
             return skillDic;
-        }
+        }*/
 
         private void PlayEffect(string skillId, Transform target) {
             if (m_skillList.ContainsKey(skillId)) {
@@ -61,7 +61,7 @@ namespace Ctrl.Battle {
             skillObject.GetComponent<View.Battle.SkillAnimation>().isPlay = true;
         }
 
-        private void SkillEffectToRole(View.Battle.Role role, Model.SkillData skill) {
+        /*private void SkillEffectToRole(View.Battle.Role role, Model.SkillData skill) {
             switch (skill.skillType) {
                 case Model.SkillData.SkillType.DAMAGE:
                     SkillDamageToRole(role, skill);
@@ -107,7 +107,7 @@ namespace Ctrl.Battle {
 
         private void SkillBuffToEnemy(View.Battle.Role enemy, Model.SkillData skill) { }
 
-        private void SkillDeBuffToEnemy(View.Battle.Role enemy, Model.SkillData skill) { }
+        private void SkillDeBuffToEnemy(View.Battle.Role enemy, Model.SkillData skill) { }*/
 
     }
 }

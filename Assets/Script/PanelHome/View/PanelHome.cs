@@ -9,13 +9,12 @@ namespace View.Home {
         public Button btnTravel;
         public Button btnShop;
         public Image mask;
-        public Image testImage;
 
         void Start() {
-            StartCoroutine("TimeLoading");
+            //StartCoroutine("TimeLoading");
         }
 
-        IEnumerator TimeLoading() {
+        /*IEnumerator TimeLoading() {
             while (true) {
                 if (testImage.fillAmount == 0) {
                     testImage.fillClockwise = true;
@@ -29,7 +28,7 @@ namespace View.Home {
                 }
                 yield return new WaitForSeconds(0.1f);
             }
-        }
+        }*/
 
     }
 }
