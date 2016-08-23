@@ -11,7 +11,7 @@ namespace Model {
         }
 
         public MissionDataList missionDataList;
-        public RoleDataList roleDataList;
+        public List<RoleData> roleDataList;
         public PropDataList propDataList;
         public List<SkillData> skillDataList = new List<SkillData>();
 
@@ -20,6 +20,8 @@ namespace Model {
 
         void Awake() {
             m_instance = this;
+            //LoadSkillDataXml();
+            //LoadRoleDataXml();
         }
 
         private void LoadSkillDataXml() {
@@ -61,6 +63,55 @@ namespace Model {
                         }
                     }
                     skillDataList.Add(data);
+                }
+            }
+        }
+
+        private void LoadRoleDataXml() {
+            string path = Application.dataPath + "/Resources/XML/" + m_roleDataXMLFileNam + ".xml";
+            XmlReader roleDataReader = new XmlTextReader(path);
+            while (roleDataReader.Read()) {
+                if (roleDataReader.LocalName == "RoleData") {
+                    RoleData data = new RoleData();
+                    for (int i = 0; i < roleDataReader.AttributeCount; ++i) {
+                        roleDataReader.MoveToAttribute(i);
+                        switch (roleDataReader.LocalName) {
+                            case "ID":
+                                data.id = roleDataReader.Value;
+                                break;
+                            case "Name":
+                                data.roleName = roleDataReader.Value;
+                                break;
+                            case "Detail":
+                                data.detail = roleDataReader.Value;
+                                break;
+                            case "LV":
+                                data.lv = int.Parse(roleDataReader.Value);
+                                break;
+                            case "HP":
+                                data.hpNum = float.Parse(roleDataReader.Value);
+                                break;
+                            case "MP":
+                                data.mpNum = float.Parse(roleDataReader.Value);
+                                break;
+                            case "ATK":
+                                data.atkNum = float.Parse(roleDataReader.Value);
+                                break;
+                            case "DEF":
+                                data.defNum = float.Parse(roleDataReader.Value);
+                                break;
+                            case "DEX":
+                                data.dexNum = float.Parse(roleDataReader.Value);
+                                break;
+                            case "LUK":
+                                data.lukNum = float.Parse(roleDataReader.Value);
+                                break;
+                            case "SkillID":
+                                data.skillId = roleDataReader.Value;
+                                break;
+                        }
+                    }
+                    roleDataList.Add(data);
                 }
             }
         }

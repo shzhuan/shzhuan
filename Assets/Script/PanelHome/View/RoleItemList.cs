@@ -60,9 +60,9 @@ namespace View.Home {
             }
         }
 
-        public void SetDate(Model.RoleDataList dataList) {
+        public void SetDate(List<Model.RoleData> dataList) {
             for (int i = 0; i < itemList.Count; ++i) {
-                itemList[i].Init(dataList.list[i], false);
+                itemList[i].Init(dataList[i], false);
             }
         }
 

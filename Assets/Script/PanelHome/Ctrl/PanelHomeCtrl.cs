@@ -88,8 +88,8 @@ namespace Ctrl.Home {
         #endregion
 
         #region Role
-        private void InitRoleList(Model.RoleDataList roleList) {
-            int roleItemNum = roleList.list.Length;
+        private void InitRoleList(List<Model.RoleData> roleList) {
+            int roleItemNum = roleList.Count;
             panelHome.roleList.ListClear();
             panelHome.roleList.SetListWidth(roleItemNum);
             for (int i = 0; i < roleItemNum; ++i) {
@@ -113,7 +113,7 @@ namespace Ctrl.Home {
         private void RefreshRoleList() {
             int activeNum = 0;
             for (int i = 0; i < panelHome.roleList.itemList.Count; ++i) {
-                bool active = GameData.roleDataList.list[i].isIdle;
+                bool active = GameData.roleDataList[i].isIdle;
                 panelHome.roleList.itemList[i].gameObject.SetActive(active);
                 if (active) {
                     ++activeNum;
@@ -125,8 +125,8 @@ namespace Ctrl.Home {
         private void ChangeRoleState() {
             for (int i = 0; i < panelHome.roleList.itemList.Count; ++i) {
                 if (panelHome.roleList.itemList[i].IsSelscted) {
-                    Model.RoleData role = GameData.roleDataList.GetRole(panelHome.roleList.itemList[i].RoleID);
-                    role.isIdle = false;
+                    //Model.RoleData role = GameData.roleDataList.GetRole(panelHome.roleList.itemList[i].RoleID);
+                    //role.isIdle = false;
                 }
             }
         }

@@ -72,15 +72,15 @@ namespace View.Battle {
         public void Init(Model.RoleData data) {
             roleIcon.sprite = data.icon;
             txtHpNum.text = data.hpNum + "/" + data.hpNum;
-            txtPpNum.text = data.ppNum + "/" + data.ppNum;
+            txtPpNum.text = data.mpNum + "/" + data.mpNum;
             txtHpNum.color = Color.green;
             txtPpNum.color = Color.green;
             hpBar.value = 1f;
             ppBar.value = 1f;
-            m_hp = data.hpNum;
-            m_maxHp = data.hpNum;
-            m_pp = data.ppNum;
-            m_maxPp = data.ppNum;
+            //m_hp = data.hpNum;
+            //m_maxHp = data.hpNum;
+            //m_pp = data.mpNum;
+            //m_maxPp = data.mpNum;
             m_skillId = data.skillId;
             m_position = this.transform.localPosition;
         }

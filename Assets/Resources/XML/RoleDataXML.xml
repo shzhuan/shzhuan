@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RoleDataList>
-  <RoleData ID="s000" Name="AAA" Detail="CCC" HP="0" MP="10" ATK="20" DEF="0" DEX="-2" LUK="0.5"/>
-  <RoleData ID="s001" Name="AAA" Detail="CCC" HP="0" MP="10" ATK="20" DEF="0" DEX="-2" LUK="0.5"/>
-  <RoleData ID="s002" Name="AAA" Detail="CCC" HP="0" MP="10" ATK="20" DEF="0" DEX="-2" LUK="0.5"/>
+  <RoleData ID="r000" Name="瑚璉" Detail="CCC" LV="1" HP="0" MP="10" ATK="20" DEF="0" DEX="2" LUK="0.5" SkillID="s000"/>
+  <RoleData ID="r001" Name="獨目" Detail="CCC" LV="1" HP="0" MP="10" ATK="20" DEF="0" DEX="2" LUK="0.5" SkillID="s000"/>
+  <RoleData ID="r002" Name="向榮" Detail="CCC" LV="1" HP="0" MP="10" ATK="20" DEF="0" DEX="2" LUK="0.5" SkillID="s000"/>
+  <RoleData ID="r003" Name="武" Detail="CCC" LV="1" HP="0" MP="10" ATK="20" DEF="0" DEX="2" LUK="0.5" SkillID="s000"/>
+  <RoleData ID="r004" Name="鴻" Detail="CCC" LV="1" HP="0" MP="10" ATK="20" DEF="0" DEX="2" LUK="0.5" SkillID="s000"/>
+  <RoleData ID="r005" Name="澤" Detail="CCC" LV="1" HP="0" MP="10" ATK="20" DEF="0" DEX="2" LUK="0.5" SkillID="s000"/>
+  <RoleData ID="r006" Name="斷離" Detail="CCC" LV="1" HP="0" MP="10" ATK="20" DEF="0" DEX="2" LUK="0.5" SkillID="s000"/>
+  <RoleData ID="r007" Name="白尾" Detail="CCC" LV="1" HP="0" MP="10" ATK="20" DEF="0" DEX="2" LUK="0.5" SkillID="s000"/>
+  <RoleData ID="r008" Name="玉液" Detail="CCC" LV="1" HP="0" MP="10" ATK="20" DEF="0" DEX="2" LUK="0.5" SkillID="s000"/>
 </RoleDataList>
