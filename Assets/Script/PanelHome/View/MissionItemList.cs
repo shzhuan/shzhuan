@@ -21,9 +21,9 @@ namespace View.Home {
             }
         }
 
-        public void SetDate(Model.MissionDataList dataList) {
+        public void SetDate(List<Model.MissionData> dataList) {
             for (int i = 0; i < itemList.Count; ++i) {
-                itemList[i].Init(dataList.list[i]);
+                itemList[i].Init(dataList[i]);
             }
         }
 

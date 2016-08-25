@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
+using System;
 
 namespace Model {
     public class GameData : MonoBehaviour {
@@ -10,18 +11,21 @@ namespace Model {
             get { return m_instance; }
         }
 
-        public MissionDataList missionDataList;
-        public List<RoleData> roleDataList;
-        public PropDataList propDataList;
+        public List<RoleData> roleDataList = new List<RoleData>();
         public List<SkillData> skillDataList = new List<SkillData>();
+        public List<MissionData> missionDataList = new List<MissionData>();
+        public List<PropData> propDataList = new List<PropData>();
 
         private const string m_roleDataXMLFileNam = "RoleDataXML";
         private const string m_skillDataXMLFileNam = "SkillDataXML";
+        private const string m_missionDataXMLFileNam = "MissionDataXML";
+        private const string m_propDataXMLFileNam = "propDataXML";
 
         void Awake() {
             m_instance = this;
             //LoadSkillDataXml();
             //LoadRoleDataXml();
+            Test();
         }
 
         private void LoadSkillDataXml() {
@@ -113,6 +117,36 @@ namespace Model {
                     }
                     roleDataList.Add(data);
                 }
+            }
+        }
+
+        public RoleData GetRoleData(string id) {
+            if (string.IsNullOrEmpty(id)) {
+                return null;
+            }
+            int num = int.Parse(id.Substring(1, 3));
+            return roleDataList[num];
+        }
+
+        public SkillData GetSkillData(string id) {
+            if (string.IsNullOrEmpty(id)) {
+                return null;
+            }
+            int num = int.Parse(id.Substring(1, 3));
+            return skillDataList[num];
+        }
+
+        public PropData GetPropData(string id){
+            if (string.IsNullOrEmpty(id)) {
+                return null;
+            }
+            int num = int.Parse(id.Substring(1, 3));
+            return propDataList[num];
+        }
+
+        public void Test() {
+            for (int i = 0; i < 100; ++i ) {
+                Debug.Log((float)Math.Pow(2, i/5)/110*i+5);
             }
         }
 

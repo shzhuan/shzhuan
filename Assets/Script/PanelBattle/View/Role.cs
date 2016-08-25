@@ -70,7 +70,7 @@ namespace View.Battle {
         }
 
         public void Init(Model.RoleData data) {
-            roleIcon.sprite = data.icon;
+            roleIcon.sprite = data.Icon;
             txtHpNum.text = data.hpNum + "/" + data.hpNum;
             txtPpNum.text = data.mpNum + "/" + data.mpNum;
             txtHpNum.color = Color.green;

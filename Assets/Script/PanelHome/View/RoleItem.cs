@@ -42,7 +42,7 @@ namespace View.Home {
         public void Init(Model.RoleData data, bool isRecommended) {
             m_Id = data.id;
             roleName.text = data.roleName;
-            roleIcon.sprite = data.icon;
+            roleIcon.sprite = data.Icon;
             m_recommended = isRecommended;
             SetBtnState(false);
         }

@@ -15,9 +15,9 @@ namespace View.Role {
             listScope.anchoredPosition = Vector2.zero;
         }
 
-        public void SetDate(Model.PropDataList dataList) {
+        public void SetDate(List<Model.PropData> dataList) {
             for (int i = 0; i < itemList.Count; ++i) {
-                itemList[i].Init(dataList.list[i]);
+                itemList[i].Init(dataList[i]);
             }
         }
 

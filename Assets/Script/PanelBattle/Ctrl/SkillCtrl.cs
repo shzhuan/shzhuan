@@ -19,34 +19,6 @@ namespace Ctrl.Battle {
 
         }
 
-        /*private Dictionary<string, Model.SkillData> LoadXml() {
-            string name = "Skill";
-            string path = Application.dataPath + "/Resources/XML/" + name + ".xml";
-            XmlReader reader = new XmlTextReader(path);
-            Dictionary<string, Model.SkillData> skillDic = new Dictionary<string, Model.SkillData>();
-            while (reader.Read()) {
-                if (reader.NodeType == XmlNodeType.Element) {
-                    if (reader.LocalName == "SKILL") {
-                        Model.SkillData data = new Model.SkillData();
-                        for (int i = 0; i < reader.AttributeCount; i++) {
-                            reader.MoveToAttribute(i);
-                            if (reader.Name == "ID") {
-                                data.id = reader.Value;
-                            } else if (reader.Name == "Type") {
-                                data.skillTypeId = reader.Value;
-                            } else if (reader.Name == "Num") {
-                                data.buffNum = int.Parse(reader.Value);
-                            }
-                        }
-                        if (!skillDic.ContainsKey(data.id)) {
-                            skillDic.Add(data.id, data);
-                        }
-                    }
-                }
-            }
-            return skillDic;
-        }*/
-
         private void PlayEffect(string skillId, Transform target) {
             if (m_skillList.ContainsKey(skillId)) {
                 m_skillList[skillId].GetComponent<View.Battle.SkillAnimation>().isPlay = true;
@@ -60,54 +32,6 @@ namespace Ctrl.Battle {
             m_skillList.Add(skillId, skillObject);
             skillObject.GetComponent<View.Battle.SkillAnimation>().isPlay = true;
         }
-
-        /*private void SkillEffectToRole(View.Battle.Role role, Model.SkillData skill) {
-            switch (skill.skillType) {
-                case Model.SkillData.SkillType.DAMAGE:
-                    SkillDamageToRole(role, skill);
-                    break;
-                case Model.SkillData.SkillType.BUFF:
-                    SkillBuffToRole(role, skill);
-                    break;
-                case Model.SkillData.SkillType.DEBUFF:
-                    SkillDeBuffToRole(role, skill);
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        private void SkillEffectToEnemy(View.Battle.Role enemy, Model.SkillData skill) {
-            switch (skill.skillType) {
-                case Model.SkillData.SkillType.DAMAGE:
-                    SkillDamageToEnemy(enemy, skill);
-                    break;
-                case Model.SkillData.SkillType.BUFF:
-                    SkillBuffToEnemy(enemy, skill);
-                    break;
-                case Model.SkillData.SkillType.DEBUFF:
-                    SkillDeBuffToEnemy(enemy, skill);
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        private void SkillDamageToRole(View.Battle.Role role, Model.SkillData skill) {
-            role.HPNum -= skill.damageNum;
-        }
-
-        private void SkillBuffToRole(View.Battle.Role role, Model.SkillData skill) { }
-
-        private void SkillDeBuffToRole(View.Battle.Role role, Model.SkillData skill) { }
-
-        private void SkillDamageToEnemy(View.Battle.Role enemy, Model.SkillData skill) {
-            enemy.HPNum -= skill.damageNum;
-        }
-
-        private void SkillBuffToEnemy(View.Battle.Role enemy, Model.SkillData skill) { }
-
-        private void SkillDeBuffToEnemy(View.Battle.Role enemy, Model.SkillData skill) { }*/
 
     }
 }

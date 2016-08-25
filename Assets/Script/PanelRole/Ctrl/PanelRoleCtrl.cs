@@ -12,7 +12,7 @@ namespace Ctrl.Role {
         }
 
         private void PropItemEvent(View.Role.PropItem item) {
-            Model.PropData data = GameData.propDataList.GetProp(item.PropID);
+            Model.PropData data = GameData.GetPropData(item.PropID);
             panelRole.changeInfo.SetData(data);
             panelRole.changeInfo.gameObject.SetActive(true);
         }

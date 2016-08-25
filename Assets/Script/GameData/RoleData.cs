@@ -17,8 +17,16 @@ namespace Model {
         public float dexNum = 0;
         public float lukNum = 0;
         public bool isIdle = true;
-        public Sprite icon = null;
-
         public string skillId = "";
+
+        private Sprite m_icon = null;
+
+        public Sprite Icon {
+            get {
+                m_icon = Resources.Load("RoleIcon/"+id) as Sprite;
+                return m_icon;
+            }
+        }
+
     }
 }

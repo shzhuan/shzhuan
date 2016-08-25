@@ -64,8 +64,8 @@ namespace Ctrl.Home {
         #endregion
 
         #region Misson
-        private void InitMissionList(Model.MissionDataList missionList) {
-            int missionItemNum = missionList.list.Length;
+        private void InitMissionList(List<Model.MissionData> missionList) {
+            int missionItemNum = missionList.Count;
             panelHome.missionList.ListClear();
             panelHome.missionList.SetListWidth(missionItemNum);
             for (int i = 0; i < missionItemNum; ++i) {
