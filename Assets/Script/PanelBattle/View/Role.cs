@@ -11,7 +11,7 @@ namespace View.Battle {
         public Text txtHpNum;
         public Text txtPpNum;
         public GameObject commandBtnList;
-        public GameObject skillPrefab;
+        public UnityEngine.Object skillPrefab;
 
         private int m_hp = 0;
         private int m_maxHp = 0;
@@ -77,10 +77,11 @@ namespace View.Battle {
             txtPpNum.color = Color.green;
             hpBar.value = 1f;
             ppBar.value = 1f;
-            //m_hp = data.hpNum;
-            //m_maxHp = data.hpNum;
-            //m_pp = data.mpNum;
-            //m_maxPp = data.mpNum;
+            skillPrefab = data.SkillPrefab;
+            m_hp = (int)data.hpNum;
+            m_maxHp = (int)data.hpNum;
+            m_pp = (int)data.mpNum;
+            m_maxPp = (int)data.mpNum;
             m_skillId = data.skillId;
             m_position = this.transform.localPosition;
         }

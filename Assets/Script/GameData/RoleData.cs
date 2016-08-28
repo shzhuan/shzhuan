@@ -20,11 +20,19 @@ namespace Model {
         public string skillId = "";
 
         private Sprite m_icon = null;
+        private UnityEngine.Object m_skillPrefab = null;
 
         public Sprite Icon {
             get {
-                m_icon = Resources.Load("RoleIcon/"+id) as Sprite;
+                m_icon = Resources.Load("RoleIcon/" + id) as Sprite;
                 return m_icon;
+            }
+        }
+
+        public UnityEngine.Object SkillPrefab {
+            get {
+                m_skillPrefab = Resources.Load("SkillPrefab" + id);
+                return m_skillPrefab;
             }
         }
 

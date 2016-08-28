@@ -6,7 +6,7 @@ using System.Xml;
 namespace Ctrl.Battle {
     public class SkillCtrl : MonoBehaviour {
 
-        private Dictionary<string, GameObject> m_skillList = new Dictionary<string, GameObject>();
+        /*private Dictionary<string, GameObject> m_skillList = new Dictionary<string, GameObject>();
 
         void Start() {
         }
@@ -31,7 +31,7 @@ namespace Ctrl.Battle {
             skillObject.transform.localScale = Vector3.one;
             m_skillList.Add(skillId, skillObject);
             skillObject.GetComponent<View.Battle.SkillAnimation>().isPlay = true;
-        }
+        }*/
 
     }
 }
