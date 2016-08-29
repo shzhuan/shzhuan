@@ -3,13 +3,14 @@ using System.Collections;
 using UnityEngine.UI;
 
 namespace View.Battle {
-    public class Role : Person {
+    public class Role : MonoBehaviour, IRace {
         public Image roleIcon;
         public Button btnRole;
         public Slider hpBar;
-        public Slider ppBar;
+        public Slider mpBar;
         public Text txtHpNum;
-        public Text txtPpNum;
+        public Text txtMpNum;
+        public Transform shakeObject;
         public GameObject commandBtnList;
         public UnityEngine.Object skillPrefab;
 
@@ -18,8 +19,12 @@ namespace View.Battle {
         private int m_pp = 0;
         private int m_maxPp = 0;
         private string m_skillId = "";
+        private float m_shakeTime = 0.5f;
+        private float m_shakeRange = 6f;
+        private bool m_isShake = false;
+        private Vector3 m_position = Vector3.zero;
 
-        public int HPNum {
+        public int HpNum {
             set {
                 m_hp = value;
                 hpBar.value = m_hp / m_maxHp;
@@ -35,17 +40,17 @@ namespace View.Battle {
             }
         }
 
-        public int PPNum
+        public int MpNum
         {
             set
             {
                 m_pp = value;
-                ppBar.value = m_pp / m_maxPp;
-                txtPpNum.text = m_pp + "/" + m_maxPp;
+                mpBar.value = m_pp / m_maxPp;
+                txtMpNum.text = m_pp + "/" + m_maxPp;
                 if (m_pp < (int)(m_maxPp * 0.1)) {
-                    txtPpNum.color = Color.red;
+                    txtMpNum.color = Color.red;
                 } else {
-                    txtPpNum.color = Color.green;
+                    txtMpNum.color = Color.green;
                 }
             }
             get
@@ -59,24 +64,23 @@ namespace View.Battle {
         }
 
         void Start() {
-            InvokeRepeating("RoleFlash", 0f, m_repeatTime);
             m_position = shakeObject.localPosition;
         }
 
         void Update() {
-            if (isShake) {
+            if (m_isShake) {
                 ShakeWithTime();
             }
         }
 
-        public void Init(Model.RoleData data) {
+        public void InitData(Model.RoleData data) {
             roleIcon.sprite = data.Icon;
             txtHpNum.text = data.hpNum + "/" + data.hpNum;
-            txtPpNum.text = data.mpNum + "/" + data.mpNum;
+            txtMpNum.text = data.mpNum + "/" + data.mpNum;
             txtHpNum.color = Color.green;
-            txtPpNum.color = Color.green;
+            txtMpNum.color = Color.green;
             hpBar.value = 1f;
-            ppBar.value = 1f;
+            mpBar.value = 1f;
             skillPrefab = data.SkillPrefab;
             m_hp = (int)data.hpNum;
             m_maxHp = (int)data.hpNum;
@@ -86,8 +90,27 @@ namespace View.Battle {
             m_position = this.transform.localPosition;
         }
 
+        public void AttackAnimation() {
+            //To Do
+        }
+
+        public void UnderAttackAnimation() {
+            m_isShake = true;
+        }
+
         public void CommandStateActive(bool active) {
             btnRole.interactable = active;
+        }
+
+        private void ShakeWithTime() {
+            if (m_shakeTime > 0) {
+                shakeObject.localPosition = m_position + Random.insideUnitSphere * m_shakeRange;
+                m_shakeTime -= Time.deltaTime;
+            } else {
+                m_isShake = false;
+                m_shakeTime = 0.5f;
+                shakeObject.localPosition = m_position;
+            }
         }
 
     }

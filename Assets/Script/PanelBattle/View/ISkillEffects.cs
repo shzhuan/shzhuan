@@ -2,5 +2,5 @@
 using System.Collections;
 
 public interface ISkillEffects {
-    void SkillEffects(string skillId);
+    void SkillEffects();
 }

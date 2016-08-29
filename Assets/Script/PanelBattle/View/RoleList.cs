@@ -15,13 +15,5 @@ namespace View.Battle {
             gridGroup.enabled = false;
         }
 
-        public void ShakeAllRole() {
-            for (int i = 0; i < roleList.Length; ++i) {
-                if (roleList[i].gameObject.activeSelf) {
-                    roleList[i].isShake = true;
-                }
-            }
-        }
-
     }
 }

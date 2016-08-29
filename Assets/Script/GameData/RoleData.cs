@@ -4,7 +4,7 @@ using System;
 
 namespace Model {
     [Serializable]
-    public class RoleData {
+    public class RoleData: IRaceData {
         public string id = "";
         public string type = "";
         public string roleName = "";

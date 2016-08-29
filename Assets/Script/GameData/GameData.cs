@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 using System;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Model {
     public class GameData : MonoBehaviour {
@@ -145,9 +147,18 @@ namespace Model {
         }
 
         public void Test() {
-            for (int i = 0; i < 100; ++i ) {
-                Debug.Log((float)Math.Pow(2, i/5)/110*i+5);
-            }
+            
+        }
+
+        private void DeserializeRoleDataJson() {
+            string path = Application.dataPath + "/Resources/XML/" + m_skillDataXMLFileNam + ".json";
+            string json = File.ReadAllText(path);
+            RoleData data = JsonConvert.DeserializeObject<RoleData>(json);
+        }
+
+        private string SerializePlayerDataJson(object obejct) {
+            string serializedString = JsonConvert.SerializeObject(obejct);
+            return serializedString;
         }
 
     }
