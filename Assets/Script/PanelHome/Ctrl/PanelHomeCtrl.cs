@@ -21,8 +21,8 @@ namespace Ctrl.Home {
 
         void Start() {
             StartCoroutine("CountDown");
-            InitMissionList(GameData.missionDataList);
-            InitRoleList(GameData.roleDataList);
+            //InitMissionList(GameData.missionDataList);
+            //InitRoleList(GameData.roleDataList);
         }
 
         #region Events   
@@ -113,7 +113,7 @@ namespace Ctrl.Home {
         private void RefreshRoleList() {
             int activeNum = 0;
             for (int i = 0; i < panelHome.roleList.itemList.Count; ++i) {
-                bool active = GameData.roleDataList[i].isIdle;
+                bool active = GameData.roleDataList.roleDataList[i].isIdle;
                 panelHome.roleList.itemList[i].gameObject.SetActive(active);
                 if (active) {
                     ++activeNum;

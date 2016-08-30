@@ -1,0 +1,30 @@
+{
+    "SkillDataList": [
+        {
+            "id": "s000",
+            "type": "damage",
+            "skillName": "技能000",
+            "detail": "这是详细",
+            "lv": "1",
+            "hpNum": "10",
+            "mpNum": "0",
+            "atkNum": "0",
+            "defNum": "0",
+            "dexNum": "0",
+            "lukNum": "0"
+        },
+        {
+            "id": "s001",
+            "type": "damage",
+            "skillName": "技能001",
+            "detail": "这是详细",
+            "lv": "1",
+            "hpNum": "8",
+            "mpNum": "0",
+            "atkNum": "1",
+            "defNum": "0",
+            "dexNum": "0",
+            "lukNum": "0"
+        }
+    ]
+}

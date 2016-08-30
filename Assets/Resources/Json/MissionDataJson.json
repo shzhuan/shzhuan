@@ -1,0 +1,16 @@
+{
+    "MissionDataList": [
+        {
+            "id": "m000",
+            "type": "battle",
+            "title": "任务000",
+            "detail": "这是详细"
+        },
+        {
+            "id": "m000",
+            "type": "battle",
+            "title": "任务000",
+            "detail": "这是详细"
+        }
+    ]
+}

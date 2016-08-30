@@ -1,0 +1,28 @@
+{
+    "PropDataList": [
+        {
+            "id": "p000",
+            "type": "up",
+            "propName": "道具000",
+            "detail": "这是详细",
+            "hpNum": "10",
+            "mpNum": "0",
+            "atkNum": "0",
+            "defNum": "0",
+            "dexNum": "0",
+            "lukNum": "0"
+        },
+        {
+            "id": "p001",
+            "type": "up",
+            "propName": "道具001",
+            "detail": "这是详细",
+            "hpNum": "8",
+            "mpNum": "0",
+            "atkNum": "1",
+            "defNum": "0",
+            "dexNum": "0",
+            "lukNum": "0"
+        }
+    ]
+}

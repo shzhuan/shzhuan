@@ -12,114 +12,27 @@ namespace Model {
         public static GameData Instance {
             get { return m_instance; }
         }
+        
+        public RoleDataList roleDataList;
+        public SkillDataList skillDataList;
+        public MissionDataList missionDataList;
+        public PropDataList propDataList;
 
-        public List<RoleData> roleDataList = new List<RoleData>();
-        public List<SkillData> skillDataList = new List<SkillData>();
-        public List<MissionData> missionDataList = new List<MissionData>();
-        public List<PropData> propDataList = new List<PropData>();
-
-        private const string m_roleDataXMLFileNam = "RoleDataXML";
-        private const string m_skillDataXMLFileNam = "SkillDataXML";
-        private const string m_missionDataXMLFileNam = "MissionDataXML";
-        private const string m_propDataXMLFileNam = "propDataXML";
+        private const string m_roleDataJsonFileNam = "RoleDataJson";
+        private const string m_skillDataJsonFileNam = "SkillDataJson";
+        private const string m_missionDataJsonFileNam = "MissionDataJson";
+        private const string m_propDataJsonFileNam = "PropDataJson";
 
         void Awake() {
             m_instance = this;
-            //LoadSkillDataXml();
-            //LoadRoleDataXml();
-            Test();
+            DeserializeDataJson();
         }
 
-        private void LoadSkillDataXml() {
-            string path = Application.dataPath + "/Resources/XML/" + m_skillDataXMLFileNam + ".xml";
-            XmlReader skillDataReader = new XmlTextReader(path);
-            while (skillDataReader.Read()) {
-                if (skillDataReader.LocalName == "SkillData") {
-                    SkillData data = new SkillData();
-                    for (int i = 0; i < skillDataReader.AttributeCount; ++i) {
-                        skillDataReader.MoveToAttribute(i);
-                        switch (skillDataReader.LocalName) {
-                            case "ID":
-                                data.id = skillDataReader.Value;
-                                break;
-                            case "Name":
-                                data.skillName = skillDataReader.Value;
-                                break;
-                            case "Detail":
-                                data.detail = skillDataReader.Value;
-                                break;
-                            case "HP":
-                                data.hpNum = float.Parse(skillDataReader.Value);
-                                break;
-                            case "MP":
-                                data.mpNum = float.Parse(skillDataReader.Value);
-                                break;
-                            case "ATK":
-                                data.atkNum = float.Parse(skillDataReader.Value);
-                                break;
-                            case "DEF":
-                                data.defNum = float.Parse(skillDataReader.Value);
-                                break;
-                            case "DEX":
-                                data.dexNum = float.Parse(skillDataReader.Value);
-                                break;
-                            case "LUK":
-                                data.lukNum = float.Parse(skillDataReader.Value);
-                                break;
-                        }
-                    }
-                    skillDataList.Add(data);
-                }
-            }
-        }
-
-        private void LoadRoleDataXml() {
-            string path = Application.dataPath + "/Resources/XML/" + m_roleDataXMLFileNam + ".xml";
-            XmlReader roleDataReader = new XmlTextReader(path);
-            while (roleDataReader.Read()) {
-                if (roleDataReader.LocalName == "RoleData") {
-                    RoleData data = new RoleData();
-                    for (int i = 0; i < roleDataReader.AttributeCount; ++i) {
-                        roleDataReader.MoveToAttribute(i);
-                        switch (roleDataReader.LocalName) {
-                            case "ID":
-                                data.id = roleDataReader.Value;
-                                break;
-                            case "Name":
-                                data.roleName = roleDataReader.Value;
-                                break;
-                            case "Detail":
-                                data.detail = roleDataReader.Value;
-                                break;
-                            case "LV":
-                                data.lv = int.Parse(roleDataReader.Value);
-                                break;
-                            case "HP":
-                                data.hpNum = float.Parse(roleDataReader.Value);
-                                break;
-                            case "MP":
-                                data.mpNum = float.Parse(roleDataReader.Value);
-                                break;
-                            case "ATK":
-                                data.atkNum = float.Parse(roleDataReader.Value);
-                                break;
-                            case "DEF":
-                                data.defNum = float.Parse(roleDataReader.Value);
-                                break;
-                            case "DEX":
-                                data.dexNum = float.Parse(roleDataReader.Value);
-                                break;
-                            case "LUK":
-                                data.lukNum = float.Parse(roleDataReader.Value);
-                                break;
-                            case "SkillID":
-                                data.skillId = roleDataReader.Value;
-                                break;
-                        }
-                    }
-                    roleDataList.Add(data);
-                }
-            }
+        public void DeserializeDataJson() {
+            DeserializeRoleDataJson();
+            DeserializeSkillDataJson();
+            DeserializePropDataJson();
+            DeserializeMissionDataJson();
         }
 
         public RoleData GetRoleData(string id) {
@@ -127,7 +40,7 @@ namespace Model {
                 return null;
             }
             int num = int.Parse(id.Substring(1, 3));
-            return roleDataList[num];
+            return roleDataList.roleDataList[num];
         }
 
         public SkillData GetSkillData(string id) {
@@ -135,7 +48,7 @@ namespace Model {
                 return null;
             }
             int num = int.Parse(id.Substring(1, 3));
-            return skillDataList[num];
+            return skillDataList.skillDataList[num];
         }
 
         public PropData GetPropData(string id){
@@ -143,17 +56,31 @@ namespace Model {
                 return null;
             }
             int num = int.Parse(id.Substring(1, 3));
-            return propDataList[num];
-        }
-
-        public void Test() {
-            
+            return propDataList.propDataList[num];
         }
 
         private void DeserializeRoleDataJson() {
-            string path = Application.dataPath + "/Resources/XML/" + m_skillDataXMLFileNam + ".json";
+            string path = Application.dataPath + "/Resources/Json/" + m_roleDataJsonFileNam + ".json";
             string json = File.ReadAllText(path);
-            RoleData data = JsonConvert.DeserializeObject<RoleData>(json);
+            roleDataList = JsonConvert.DeserializeObject<RoleDataList>(json);
+        }
+
+        private void DeserializeSkillDataJson() {
+            string path = Application.dataPath + "/Resources/Json/" + m_skillDataJsonFileNam + ".json";
+            string json = File.ReadAllText(path);
+            skillDataList = JsonConvert.DeserializeObject<SkillDataList>(json);
+        }
+
+        private void DeserializePropDataJson() {
+            string path = Application.dataPath + "/Resources/Json/" + m_propDataJsonFileNam + ".json";
+            string json = File.ReadAllText(path);
+            propDataList = JsonConvert.DeserializeObject<PropDataList>(json);
+        }
+
+        private void DeserializeMissionDataJson() {
+            string path = Application.dataPath + "/Resources/Json/" + m_missionDataJsonFileNam + ".json";
+            string json = File.ReadAllText(path);
+            missionDataList = JsonConvert.DeserializeObject<MissionDataList>(json);
         }
 
         private string SerializePlayerDataJson(object obejct) {

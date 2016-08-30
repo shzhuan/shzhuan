@@ -1,0 +1,32 @@
+{
+    "RoleDataList": [
+        {
+            "id": "r000",
+            "type": "Role",
+            "roleName": "瑚璉",
+            "detail": "这是详细",
+            "lv": "1",
+            "hpNum": "10",
+            "mpNum": "7",
+            "atkNum": "5",
+            "defNum": "3",
+            "dexNum": "4",
+            "lukNum": "5",
+            "skillId": "s000"
+        },
+        {
+            "id": "r001",
+            "type": "Role",
+            "roleName": "獨目",
+            "detail": "这是详细",
+            "lv": "1",
+            "hpNum": "6",
+            "mpNum": "6",
+            "atkNum": "4",
+            "defNum": "4",
+            "dexNum": "4",
+            "lukNum": "5",
+            "skillId": "s001"
+        }
+    ]
+}
