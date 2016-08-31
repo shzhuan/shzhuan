@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
 using System;
 using Newtonsoft.Json;
 using System.IO;
@@ -17,24 +16,19 @@ namespace Model {
         public SkillDataList skillDataList;
         public MissionDataList missionDataList;
         public PropDataList propDataList;
-
-        private const string m_roleDataJsonFileNam = "RoleDataJson";
-        private const string m_skillDataJsonFileNam = "SkillDataJson";
-        private const string m_missionDataJsonFileNam = "MissionDataJson";
-        private const string m_propDataJsonFileNam = "PropDataJson";
+        public PlayerData playerData;
+        
+        private const string m_roleDataJsonFileName = "RoleDataJson";
+        private const string m_skillDataJsonFileName = "SkillDataJson";
+        private const string m_missionDataJsonFileName = "MissionDataJson";
+        private const string m_propDataJsonFileName = "PropDataJson";
 
         void Awake() {
             m_instance = this;
             DeserializeDataJson();
+            CreateData();
         }
-
-        public void DeserializeDataJson() {
-            DeserializeRoleDataJson();
-            DeserializeSkillDataJson();
-            DeserializePropDataJson();
-            DeserializeMissionDataJson();
-        }
-
+        
         public RoleData GetRoleData(string id) {
             if (string.IsNullOrEmpty(id)) {
                 return null;
@@ -59,28 +53,57 @@ namespace Model {
             return propDataList.propDataList[num];
         }
 
+        private void DeserializeDataJson() {
+            DeserializeRoleDataJson();
+            DeserializeSkillDataJson();
+            DeserializePropDataJson();
+            DeserializeMissionDataJson();
+        }
+
+        private void DeserializePlayerDataJson() {
+            string path = Application.persistentDataPath + "/Save/GameData.json";
+            string json = File.ReadAllText(path);
+            playerData = JsonConvert.DeserializeObject<PlayerData>(json);
+        }
+
         private void DeserializeRoleDataJson() {
-            string path = Application.dataPath + "/Resources/Json/" + m_roleDataJsonFileNam + ".json";
+            string path = Application.dataPath + "/Resources/Json/" + m_roleDataJsonFileName + ".json";
             string json = File.ReadAllText(path);
             roleDataList = JsonConvert.DeserializeObject<RoleDataList>(json);
         }
 
         private void DeserializeSkillDataJson() {
-            string path = Application.dataPath + "/Resources/Json/" + m_skillDataJsonFileNam + ".json";
+            string path = Application.dataPath + "/Resources/Json/" + m_skillDataJsonFileName + ".json";
             string json = File.ReadAllText(path);
             skillDataList = JsonConvert.DeserializeObject<SkillDataList>(json);
         }
 
         private void DeserializePropDataJson() {
-            string path = Application.dataPath + "/Resources/Json/" + m_propDataJsonFileNam + ".json";
+            string path = Application.dataPath + "/Resources/Json/" + m_propDataJsonFileName + ".json";
             string json = File.ReadAllText(path);
             propDataList = JsonConvert.DeserializeObject<PropDataList>(json);
         }
 
         private void DeserializeMissionDataJson() {
-            string path = Application.dataPath + "/Resources/Json/" + m_missionDataJsonFileNam + ".json";
+            string path = Application.dataPath + "/Resources/Json/" + m_missionDataJsonFileName + ".json";
             string json = File.ReadAllText(path);
             missionDataList = JsonConvert.DeserializeObject<MissionDataList>(json);
+        }
+
+        public void SaveData() {
+            string path = Application.persistentDataPath + "/Save/GameData.json";
+            string data = SerializePlayerDataJson(playerData);
+            File.WriteAllText(path, data);
+        }
+
+        private void CreateData() {
+            string directoryPath = Application.persistentDataPath + "/Save";
+            string jsonPath = Application.persistentDataPath + "/Save/GameData.json";
+            if (!Directory.Exists(directoryPath)) {
+                string data = "";
+                Directory.CreateDirectory(directoryPath);
+                File.WriteAllText(jsonPath, data);
+            }
         }
 
         private string SerializePlayerDataJson(object obejct) {

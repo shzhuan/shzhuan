@@ -10,6 +10,7 @@ namespace Model {
         public string roleName = "";
         public string detail = "";
         public int lv = 0;
+        public int expNum = 0;
         public float hpNum = 0;
         public float mpNum = 0;
         public float atkNum = 0;
