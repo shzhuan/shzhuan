@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 namespace Ctrl.Battle {
     public class RoleCtrl : MonoBehaviour {
-        public View.Battle.Role role;
+        public View.Battle.RoleItem role;
         public List<GameObject> skillList;
 
-        public void SkillToRole(View.Battle.Role role) { }
+        public void SkillToRole(View.Battle.RoleItem role) { }
 
         private void InstantiateSkillOnRole() {
             GameObject skillObject = Instantiate(role.skillPrefab) as GameObject;

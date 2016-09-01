@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace View.Battle {
     public class RoleList : MonoBehaviour {
-        public Role[] roleList;
+        public RoleItem[] roleList;
         public GridLayoutGroup gridGroup;
 
         void Start() {

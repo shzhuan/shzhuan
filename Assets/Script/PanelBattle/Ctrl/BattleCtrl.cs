@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Ctrl.Battle {
     public class BattleCtrl : MonoBehaviour {
-        private List<View.IRace> ActionOrderList = new List<View.IRace>();
+        private List<View.IRaceView> ActionOrderList = new List<View.IRaceView>();
 
         private void Init() {
 
