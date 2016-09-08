@@ -4,11 +4,12 @@ using System.Collections;
 public class SmoothCamera : MonoBehaviour {
 
     public Transform lookAtObject;
-    public Vector3 positionOffset;
     public float smoothSpeed;
     public float rotateSpeed;
+    public float unitDistance;
     public bool isSmooth = false;
 
+    private Vector3 positionOffset = Vector3.zero;
     private float m_time = 0f;
 
     void LateUpdate() {
@@ -19,10 +20,10 @@ public class SmoothCamera : MonoBehaviour {
             } else {
                 angles = -angles;
             }
-            float cornerAngle = Mathf.Tan(2 * Mathf.PI * (angles / 360));
-            Debug.Log(cornerAngle);
-            float distance = Mathf.Abs(transform.position.z);
-            Vector3 targetPosition = lookAtObject.transform.position + positionOffset + new Vector3(cornerAngle * distance, 0f, 0f);
+            float angleSin = Mathf.Sin(2 * Mathf.PI * (angles / 360));
+            float angleCos = Mathf.Cos(2 * Mathf.PI * (angles / 360));
+            positionOffset = new Vector3(angleSin * unitDistance, 3f, -Mathf.Abs(angleCos * unitDistance));
+            Vector3 targetPosition = lookAtObject.transform.position + positionOffset;
             Quaternion targetRotation = lookAtObject.transform.rotation;
             m_time += Time.deltaTime;
             transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
