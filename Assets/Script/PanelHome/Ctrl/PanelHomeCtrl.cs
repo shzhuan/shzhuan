@@ -27,7 +27,7 @@ namespace Ctrl.Home {
 
         #region Events   
         private void SendTravelCommand() {
-            UIController.Instance.Command(UICommand.SHAN_TRAVEL);
+            //UIController.Instance.Command(UICommand.SHAN_TRAVEL);
         }
 
         private void MissionStart() {
