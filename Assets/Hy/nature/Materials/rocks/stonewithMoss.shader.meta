@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 5b01ad2daa6f21849ae6e04b8db466ea
+timeCreated: 1478476822
+licenseType: Free
+ShaderImporter:
+  defaultTextures:
+  - _TexLower: {fileID: 2800000, guid: dc26a5b000b9ce345a54edc79e4d864d, type: 3}
+  - _TexTop: {fileID: 2800000, guid: d89c03cbee179394ba76f8d8bc4ec504, type: 3}
+  - _ramp: {fileID: 2800000, guid: ab04cf8dfe921ea4d9bc0b21a443482b, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
