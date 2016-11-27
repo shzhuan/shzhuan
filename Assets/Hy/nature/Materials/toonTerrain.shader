@@ -74,7 +74,7 @@ Shader "Shader Forge/toonTerrain" {
             #include "AutoLight.cginc"
             #include "Lighting.cginc"
             #pragma multi_compile_fwdbase_fullshadows
-            #pragma exclude_renderers gles3 metal d3d11_9x xbox360 xboxone ps3 ps4 psp2 
+            #pragma exclude_renderers metal d3d11_9x xbox360 xboxone ps3 ps4 psp2 
             #pragma target 3.0
             uniform sampler2D _Control; uniform float4 _Control_ST;
             uniform sampler2D _Splat0; uniform float4 _Splat0_ST;

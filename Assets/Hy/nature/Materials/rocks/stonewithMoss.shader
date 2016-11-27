@@ -36,7 +36,7 @@ Shader "Shader Forge/stoneTest" {
             #include "UnityCG.cginc"
             #pragma fragmentoption ARB_precision_hint_fastest
             #pragma multi_compile_shadowcaster
-            #pragma exclude_renderers gles3 metal d3d11_9x xbox360 xboxone ps3 ps4 psp2 
+            #pragma exclude_renderers metal d3d11_9x xbox360 xboxone ps3 ps4 psp2 
             #pragma target 3.0
             uniform sampler2D _TexLower; uniform float4 _TexLower_ST;
             uniform sampler2D _TexTop; uniform float4 _TexTop_ST;
