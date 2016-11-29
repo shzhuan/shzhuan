@@ -1,0 +1,423 @@
+fileFormatVersion: 2
+guid: a9df274ee213a474ab48c5f2eb7c83a9
+timeCreated: 1480405929
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: selector_0
+    21300002: selector_1
+    21300004: selector_2
+    21300006: selector_3
+    21300008: selector_4
+    21300010: selector_5
+    21300012: selector_6
+    21300014: selector_7
+    21300016: selector_8
+    21300018: selector_9
+    21300020: selector_10
+    21300022: selector_11
+    21300024: selector_12
+    21300026: selector_13
+    21300028: selector_14
+    21300030: selector_15
+    21300032: selector_16
+    21300034: selector_17
+    21300036: selector_18
+    21300038: selector_19
+    21300040: selector_20
+    21300042: selector_21
+    21300044: selector_22
+    21300046: selector_23
+    21300048: selector_24
+    21300050: selector_25
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: selector_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 800
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_1
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 800
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_2
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 800
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_3
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 800
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_4
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 800
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 640
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_6
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 640
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_7
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 640
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_8
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 640
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_9
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 640
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_11
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 480
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_12
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 480
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_13
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 480
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_14
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 480
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_16
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 320
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_17
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 320
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_18
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 320
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_19
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 320
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_21
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 160
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_22
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 160
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_23
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 160
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_24
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 160
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: selector_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 28
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
